@@ -1,0 +1,9 @@
+<FontAwesomeIcon
+        icon={faMagnifyingGlass}
+        size="2x"
+/>
+<FontAwesomeIcon
+        style={{color: "orange" }}
+        icon={faCircleStop}
+    spin
+/>
