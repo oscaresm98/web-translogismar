@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/public/img/logo.png'
-import logoMundo from '@/public/img/logoMundo.png'
 import Navigation from './navigation'
+
 
 export default function Header() {
   return (
@@ -17,9 +17,7 @@ export default function Header() {
             width={300}
           />
         </Link>
-
         <Navigation />
-
       </div>
     </header>
   )
