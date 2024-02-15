@@ -7,7 +7,7 @@ export default function LinksServices() {
   return (
     <div className='md:grid md:grid-cols-2 md:p-4 md:gap-2 items-center'>
 
-      <div className="hidden md:flex md:flex-col justify-center bg-slate-100/90 h-full p-2 rounded">
+      <Link href={'/servicios'} className="hidden md:flex md:flex-col justify-center bg-slate-100/90 h-full p-2 rounded">
         <Image
           src={logoMundo}
           alt='imagen de logo mundo'
@@ -16,7 +16,7 @@ export default function LinksServices() {
         />
         <p className="text-slate-700">Translogismar S.A.</p>
         <p className="hidden md:block text-black/70 text-xs">Transportando su Carga con Seguridad y Experiencia.</p>
-      </div>
+      </Link>
 
       <div>
         <div className="md:hover:bg-slate-100 md:p-2">

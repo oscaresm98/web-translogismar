@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
-import { Fragment } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
-import Head from "next/head";
-import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {

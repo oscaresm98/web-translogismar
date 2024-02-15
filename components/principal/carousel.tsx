@@ -1,8 +1,8 @@
 'use client'
 import { CSSProperties } from "react"
-import camion from "../public/img/camion.jpg"
-import contenedorUno from "../public/img/contenedores1.jpg"
-import contenedorDos from "../public/img/contenedores2.jpg"
+import camion from "@/public/img/camion.jpg"
+import contenedorUno from "@/public/img/contenedores1.jpg"
+import contenedorDos from "@/public/img/contenedores2.jpg"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from 'swiper/react';
 

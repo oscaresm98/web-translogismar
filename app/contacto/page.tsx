@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ImageEffect from '@/components/effects/image-effect'
 import imagenContacto from '@/public/img/camion.jpg'
 
 export const metadata = {
@@ -8,12 +8,11 @@ export const metadata = {
 
 export default function Contacto() {
   return (
-    <main className="container md:px-8">
-        <h1 className="text-5xl my-12 font-black text-[#ff6a0f] text-center">Contacto</h1>
-        <Image
-          src={imagenContacto}
-          alt='imagen de contacto'
-          priority
+    <main className="max-w-5xl mx-auto p-4 md:p-0">
+        <h1 className="text-5xl my-12 font-bold text-[#ff6a0f] text-center">Contacto</h1>
+        <ImageEffect
+          url={imagenContacto}
+          alternative='imagen de contacto'
         />
 
         <h2 className="text-4xl mt-12 text-center">Llene el Formulario de Contacto</h2>

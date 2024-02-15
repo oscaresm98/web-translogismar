@@ -74,17 +74,17 @@ const Footer = () => {
       <div className="flex flex-col items-center mt-3 gap-2 md:gap-0 md:mt-auto md:flex-row md:justify-between lg:container lg:mx-auto">
         <nav className="flex items-center md:w-auto md:gap-5 mt-4 md:mt-0 flex-col md:flex-row w-full">
           <Link
-            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-400 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
+            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
             href='/'>
             Inicio
           </Link>
           <Link
-            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-400 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
+            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
             href='/nosotros'>
             Nosotros
           </Link>
           <Link
-            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-400 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
+            className={`uppercase text-[#0059aa] w-full text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] focus:text-[#ff6a0f]`}
             href='/contacto'>
             Contacto
           </Link>
