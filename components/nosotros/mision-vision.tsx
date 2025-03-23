@@ -1,9 +1,14 @@
 'use client'
 import useIntersection from "@/hooks/useIntersection";
+import EnterpriseInterface from "@/interfaces/enterpriseInterface";
 import { faArrowsToDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function MisionVision() {
+type MisionVisionProps = {
+    enterprise: EnterpriseInterface
+}
+
+function MisionVision({enterprise}: MisionVisionProps) {
 
     const [misionRef, readyMV] = useIntersection({ threshold: 0.3 })
 
@@ -22,14 +27,14 @@ function MisionVision() {
             >
                 <FontAwesomeIcon icon={faArrowsToDot} className="text-white mt-10" size="7x" />
                 <h2 className="text-4xl text-white font-bold mt-5">Misión</h2>
-                <p className="text-white text-center mt-5">Nuestra misión es ofrecer soluciones de transporte terrestre de carga pesada que superen las expectativas de nuestros clientes. Nos comprometemos a proporcionar servicios seguros, eficientes y personalizados, impulsados por la innovación y la excelencia operativa. Con cada entrega, buscamos fortalecer alianzas duraderas, contribuir al desarrollo sostenible y consolidarnos como líderes en la industria.</p>
+                <p className="text-white text-center mt-5">{enterprise.descMision}</p>
             </div>
             <div
                 className={`flex flex-col items-center self-start transition-all duration-500 delay-150 ${readyMV ? 'translate-x-0 opacity-100' : 'translate-x-[10rem] opacity-0'}`}
             >
                 <FontAwesomeIcon icon={faArrowsToDot} className="text-white mt-10" size="7x" />
                 <h2 className="text-4xl text-white font-bold mt-5">Visión</h2>
-                <p className="text-white text-center mt-5">Nuestra visión es ser reconocidos como el referente en el transporte terrestre de carga pesada, destacando por nuestra integridad, eficiencia y compromiso con la excelencia. Aspiramos a expandir nuestra presencia de manera sostenible, aprovechando tecnologías emergentes y prácticas ambientalmente responsables. Buscamos ser la elección preferida de clientes que valoran la calidad, la confianza y la innovación en el transporte de sus cargas.</p>
+                <p className="text-white text-center mt-5">{enterprise.descVision}</p>
             </div>
         </div>
     )

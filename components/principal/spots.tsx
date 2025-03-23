@@ -10,7 +10,7 @@ export default function Spots() {
         ref={segRef}
         className={`text-center transition-all duration-500 delay-150 ${readySeg ? 'translate-x-0 opacity-100' : 'translate-x-[-10rem] opacity-0'}`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-lock" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#0059aa" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-lock" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#233343" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
           <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
@@ -24,7 +24,7 @@ export default function Spots() {
       <div
       className={`text-center mt-7 md:mt-0 transition-all duration-500 delay-150 ${readySeg ? 'translate-y-0 opacity-100' : 'translate-y-40 opacity-0'}`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-businessplan" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#0059aa" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-businessplan" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#233343" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" />
           <path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" />
@@ -40,7 +40,7 @@ export default function Spots() {
       <div 
         className={`text-center mt-7 md:mt-0 transition-all duration-500 delay-150 ${readySeg ? 'translate-x-0 opacity-100' : 'translate-x-40 opacity-0'}`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-clock-hour-3" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#0059aa" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto icon icon-tabler icon-tabler-clock-hour-3" width="200" height="200" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#233343" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
           <path d="M12 12h3.5" />

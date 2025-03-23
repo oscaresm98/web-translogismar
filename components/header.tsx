@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '@/public/img/logo.png'
+import logo from '@/public/img/logo.svg'
 import Navigation from './navigation'
 
 
@@ -14,7 +14,7 @@ export default function Header() {
             src={logo}
             alt='imagen de logo'
             priority
-            width={300}
+            width={400}
           />
         </Link>
         <Navigation />

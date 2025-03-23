@@ -7,6 +7,7 @@ import { useState } from "react";
 import LinksServices from "./links-services";
 
 export default function Navigation() {
+  
   const currentRoute = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
@@ -21,7 +22,7 @@ export default function Navigation() {
   return (
     <nav className="flex items-center md:w-auto md:gap-5 mt-4 md:mt-0 flex-col md:flex-row w-full md:relative">
       <Link
-        className={`uppercase text-[#0059aa] font-bold w-full text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] ${currentRoute === "/" ? "text-[#ff6a0f]" : ""}`}
+        className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima ${currentRoute === "/" ? "text-prima" : ""}`}
         href='/'>
         Inicio
       </Link>
@@ -30,10 +31,10 @@ export default function Navigation() {
           onClick={toggleDropdown}
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
-          className={`uppercase text-[#0059aa] font-bold w-full flex items-center justify-center gap-1 text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] hover:cursor-pointer ${currentRoute === "/servicios" ? "text-[#ff6a0f]" : ""}`}
-          >
-            Servicios
-            <FontAwesomeIcon icon={faChevronDown} className={`transition-transform duration-300 ${isOpen && 'rotate-180'}`} />
+          className={`uppercase text-secun font-bold w-full flex items-center justify-center gap-1 text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima hover:cursor-pointer ${currentRoute === "/servicios" ? "text-prima" : ""}`}
+        >
+          Servicios
+          <FontAwesomeIcon icon={faChevronDown} className={`transition-transform duration-300 ${isOpen && 'rotate-180'}`} />
         </p>
         <div
           onMouseEnter={openDropdown} onMouseLeave={closeDropdown}
@@ -45,12 +46,17 @@ export default function Navigation() {
         )} */}
       </div>
       <Link
-        className={`${isOpen ? "mt-44 sm:mt-40 md:mt-0" : "mt-0"} uppercase text-[#0059aa] font-bold w-full text-center texts text-sm p-2 transition-all duration-300 delay-150 hover:text-[#ff6a0f] ${currentRoute === "/nosotros" ? "text-[#ff6a0f]" : ""}`}
+        className={`${isOpen ? "mt-44 sm:mt-40 md:mt-0" : "mt-0"} uppercase text-secun font-bold w-full text-center text-sm p-2 transition-all duration-300 delay-150 hover:text-prima ${currentRoute === "/noticias" ? "text-prima" : ""}`}
+        href='/noticias'>
+        Noticias
+      </Link>
+      <Link
+        className={`${isOpen ? "mt-44 sm:mt-40 md:mt-0" : "mt-0"} uppercase text-secun font-bold w-full text-center text-sm p-2 transition-all duration-300 delay-150 hover:text-prima ${currentRoute === "/nosotros" ? "text-prima" : ""}`}
         href='/nosotros'>
         Nosotros
       </Link>
       <Link
-        className={`uppercase text-[#0059aa] font-bold w-full text-center texts text-sm p-2 transition duration-300 delay-150 hover:text-[#ff6a0f] ${currentRoute === "/contacto" ? "text-[#ff6a0f]" : ""}`}
+        className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima ${currentRoute === "/contacto" ? "text-prima" : ""}`}
         href='/contacto'>
         Contacto
       </Link>

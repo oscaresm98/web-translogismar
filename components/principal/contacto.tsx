@@ -16,7 +16,7 @@ export default function Contacto() {
         <p className={`text-white mb-10 transition-all duration-500 delay-150 ${readyCont ? 'translate-x-0 opacity-100' : 'translate-x-40 opacity-0'}`}>Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
         <Link 
           href="/contacto" 
-          className={`bg-[#ff6a0f] transition-all duration-300 delay-150 hover:bg-[#9b5428] p-3 text-white font-semibold rounded-sm ${readyCont ? 'opacity-100' : 'opacity-0'}`}
+          className={`bg-prima transition-all duration-300 delay-150 hover:bg-[#9b5428] p-3 text-white font-semibold rounded-sm ${readyCont ? 'opacity-100' : 'opacity-0'}`}
         >Contáctanos</Link>
       </div>
     </section>

@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Users {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  password  String
+  name      String?
+  rol       Rol        @default(USER)
+  services  Services[]
+  news      News[]
+  state     Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updateAt  DateTime   @updatedAt
+}
+
+model Client {
+  id          Int    @id @default(autoincrement())
+  name        String
+  imageURL    String @db.VarChar(1000)
+  description String @db.Text
+}
+
+model SocialMedia {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  link String @db.VarChar(1000)
+}
+
+enum Rol {
+  USER
+  ADMIN
+}
+
+model Services {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  location    String
+  phrase      String   @default("Mejor Servicio del mercado")
+  imageURL    String   @db.VarChar(1000)
+  description String   @db.Text
+  slug        String?  @unique
+  state       Boolean  @default(true)
+  author      Users    @relation(fields: [authorId], references: [id])
+  authorId    Int
+  createdAt   DateTime @default(now())
+  updateAt    DateTime @updatedAt
+}
+
+model Enterprise {
+  id          Int    @id @default(autoincrement())
+  ImageURL    String @db.VarChar(1000)
+  descHistory String @db.Text
+  descMision  String @db.Text
+  descVision  String @db.Text
+  address     String
+  phone       String
+  cellphone   String
+}
+
+model News {
+  id          Int       @id @default(autoincrement())
+  title       String    @unique
+  slug        String?   @unique
+  content     String    @db.Text
+  imageURL    String?
+  published   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+  authorId    Int
+  author      Users     @relation(fields: [authorId], references: [id])
+}

@@ -1,9 +1,10 @@
 export default interface ServiceInterface {
     id: number,
     name: string,
-    price: number,
-    image: string,
+    location: string,
+    imageURL: string,
     description: string,
-    subtitle: string,
+    authorId?: number,
     slug: string
+    phrase?: string
 }

@@ -1,9 +1,13 @@
 import Link from "next/link"
 import Image from "next/image";
-import logoMundo from "@/public/img/logoMundo.png"
+import logoMundo from "@/public/img/logoMundo.svg"
+import useService from "@/hooks/useService";
 
 export default function LinksServices() {
-  const linkStyles = `capitalize text-center md:text-start text-sm block p-2 md:p-0 text-[#0059aa] hover:text-[#ff6a0f]`;
+  const { services, isError, isLoading } = useService()
+  const linkStyles = `capitalize text-center md:text-start text-sm block p-2 md:p-0 text-secun hover:text-prima`;
+
+  if (isLoading) return <p>Cargando...</p>
   return (
     <div className='md:grid md:grid-cols-2 md:p-4 md:gap-2 items-center'>
 
@@ -14,11 +18,24 @@ export default function LinksServices() {
           priority
           width={70}
         />
-        <p className="text-slate-700">Translogismar S.A.</p>
+        <p className="text-slate-700">Grupo Logístico</p>
         <p className="hidden md:block text-black/70 text-xs">Transportando su Carga con Seguridad y Experiencia.</p>
       </Link>
 
       <div>
+        {
+          services?.map(service => (
+            <div className="md:mt-5 md:hover:bg-slate-100 md:p-2" key={service.id}>
+              <Link href={`/servicios/${service.slug}`} className={linkStyles}>
+                <h3>{service.name}</h3>
+              </Link>
+              <p className="hidden md:block text-black/70 text-xs">{service.phrase}</p>
+            </div>
+          ))
+        }
+
+
+        {/* 
         <div className="md:hover:bg-slate-100 md:p-2">
           <Link href='/' className={linkStyles}>
             <h3>Transporte Terrestre</h3>
@@ -45,7 +62,8 @@ export default function LinksServices() {
             <h3>Candado sátelital</h3>
           </Link>
           <p className="hidden md:block text-black/70 text-xs">How to install dependencies and structure your app.</p>
-        </div>
+        </div> 
+        */}
       </div>
 
     </div>
