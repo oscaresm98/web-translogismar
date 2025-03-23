@@ -1,10 +1,10 @@
 import SocialMediaInterface from "@/interfaces/socialMediaInterface"
 import SocialMediaForm from "@/components/admin/socialmedia/formulario-sociales"
-import { getSocialMediasAdmin } from "@/data/social-media"
+import { getSocialMediasPrisma } from "@/data/prismaSocialMedia"
 
 
 export default async function SocialesAdminPage() {
-  const sociales = await getSocialMediasAdmin() as SocialMediaInterface[]
+  const sociales = await getSocialMediasPrisma() as SocialMediaInterface[]
   
   return (
     <div className='container p-2'>

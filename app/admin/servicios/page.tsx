@@ -1,11 +1,11 @@
 import Servicio from "@/components/admin/servicios/servicio"
 import ServiceInterface from "@/interfaces/serviceInterface"
 import Link from "next/link"
-import {getDataServices} from '@/data/servicio'
+import { getServicesPrisma } from "@/data/prismaServicios"
 
 
 export default async function ServiciosPage() {
-  const services = await getDataServices() as ServiceInterface[]
+  const services = await getServicesPrisma() as ServiceInterface[]
 
   return (
     <div className="container p-2">

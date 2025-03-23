@@ -3,11 +3,11 @@ import Spots from "@/components/principal/spots"
 import Contacto from "@/components/principal/contacto";
 import Image from "next/image";
 import { ClientInteface } from "@/interfaces/clientInterface";
-import { getDataClients } from "@/data/clientes";
+import { getClientsPrisma } from "@/data/prismaCliesntes";
 
 
 export default async function Home() {
-  const clients = await getDataClients() as ClientInteface[]
+  const clients = await getClientsPrisma() as ClientInteface[]
   return (
     <>
       <Carousel />

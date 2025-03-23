@@ -10,17 +10,19 @@ export const config = { matcher: ["/admin/:path*", "/auth/register"] }
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
 
-  // En Vercel normalmente se usa HTTPS, pero se fuerza en caso de que no sea así
-  if (url.protocol !== 'https:') {
-    url.protocol = 'https:'
-    return NextResponse.redirect(url)
+  if (process.env.NODE_ENV === "production"){
+    // En Vercel normalmente se usa HTTPS, pero se fuerza en caso de que no sea así
+    if (url.protocol !== 'https:') {
+      url.protocol = 'https:'
+      return NextResponse.redirect(url)
+    }
+    // Si la petición no es al dominio correcto, redirige a él
+    if (req.headers.get('host') !== 'web-translogismar.vercel.app') {
+      url.hostname = 'web-translogismar.vercel.app'
+      return NextResponse.redirect(url)
+    }
   }
-
-  // Si la petición no es al dominio correcto, redirige a él
-  if (req.headers.get('host') !== 'web-translogismar.vercel.app') {
-    url.hostname = 'web-translogismar.vercel.app'
-    return NextResponse.redirect(url)
-  }
+  
 
   return NextResponse.next()
 }

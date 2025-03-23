@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import SocialMediaInterface from "@/interfaces/socialMediaInterface";
 
+
 export default function useSocialMedia() {
   const url = '/api/sociales'
   const fetcher = () => fetch(url).then(res => res.json()).then(data => data)

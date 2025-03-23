@@ -1,10 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import EnterpriseInterface from "@/interfaces/enterpriseInterface"
-import { getEnterprises } from "@/data/nosotros"
+import { getEnterprisesPrisma } from "@/data/prismaNosotros"
 
 export default async function NosotrosAdminPage() {
-  const dataEnterprise = await getEnterprises() as EnterpriseInterface[]
+  const dataEnterprise = await getEnterprisesPrisma() as EnterpriseInterface[]
   const enterprise = dataEnterprise.pop() as EnterpriseInterface
 
   return (

@@ -1,12 +1,12 @@
+
 import Link from "next/link"
-import { getDataClients } from "@/data/clientes"
 import Cliente from "@/components/admin/clientes/cliente"
 import { ClientInteface } from "@/interfaces/clientInterface"
-
+import { getClientsPrisma } from "@/data/prismaCliesntes"
 
 
 export default async function ClientesPage() {
-  const clients = await getDataClients() as ClientInteface[]
+  const clients = await getClientsPrisma() as ClientInteface[]
 
   return (
     <div className="container p-2">

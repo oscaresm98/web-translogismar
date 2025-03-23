@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import NewsSection from "@/components/noticias/news-section"
 import NewsInterface from "@/interfaces/newsInterface"
-import { getDataNews } from "@/data/noticias"
+import { getNewsPrisma } from "@/data/prismaNoticias"
 
 export const metadata: Metadata = {
   title: 'Noticias',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default async function NoticiasPage() {
-  const newsData = await getDataNews() as NewsInterface[]
+  const newsData = await getNewsPrisma() as NewsInterface[]
 
   return (
     <main className="container md:px-8">

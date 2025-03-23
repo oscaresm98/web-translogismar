@@ -1,10 +1,10 @@
 import Noticia from "@/components/admin/news/noticia";
 import NewsInterface from "@/interfaces/newsInterface";
 import Link from "next/link";
-import { getDataNews } from '@/data/noticias';
+import { getNewsPrisma } from "@/data/prismaNoticias";
 
 export default async function NoticiasPage() {
-  const news = await getDataNews() as NewsInterface[];
+  const news = await getNewsPrisma() as NewsInterface[];
 
   return (
     <div className="container p-2">

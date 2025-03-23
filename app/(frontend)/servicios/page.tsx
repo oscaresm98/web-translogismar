@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import ServiceCard from "@/components/servicios/service-card"
 import ServiceInterface from "@/interfaces/serviceInterface"
-import { getDataServices } from "@/data/servicio"
+import { getServicesPrisma } from "@/data/prismaServicios"
 
 
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Sercivios() {
-  const servicesData = await getDataServices() as ServiceInterface[]
+  const servicesData = await getServicesPrisma() as ServiceInterface[]
   return (
     <main className="container md:px-8">
       <h1 className="text-5xl text-prima text-center font-bold my-12">Transporte de Carga Pesada</h1>

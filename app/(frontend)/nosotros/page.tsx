@@ -1,8 +1,8 @@
 import MisionVision from "@/components/nosotros/mision-vision"
 import SloganNosotros from "@/components/nosotros/slogan-nosotros"
 import ImageEffect from "@/components/effects/image-effect"
-import { getEnterprises } from "@/data/nosotros"
 import EnterpriseInterface from "@/interfaces/enterpriseInterface"
+import { getEnterprisesPrisma } from "@/data/prismaNosotros"
 
 
 export const metadata = {
@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default async function Nosotros() {
-  const nosotros = await getEnterprises() as EnterpriseInterface[]
+  const nosotros = await getEnterprisesPrisma() as EnterpriseInterface[]
   return (
     <>
     <main className="container md:px-8">
