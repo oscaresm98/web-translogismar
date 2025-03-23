@@ -2,11 +2,11 @@ import { NextResponse, NextRequest } from 'next/server'
 import db from "@/libs/db"
 import { uploadImage, deleteImage } from '@/libs/upload-image'
 import { revalidateTag } from 'next/cache'
-import { auth } from '../../auth/[...nextauth]/route'
-import { NextApiRequest } from 'next'
+import { auth } from '@/libs/auth'
 
 
-export async function GET(req: NextApiRequest, { params }: { params: { id: number } }) {
+
+export async function GET(req: NextRequest, { params }: { params: { id: number } }) {
     try {
         const enterpriseFound = await db.enterprise.findUnique({
             where: {

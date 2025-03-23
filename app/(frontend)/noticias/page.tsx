@@ -1,5 +1,4 @@
 import { Metadata } from "next"
-import Link from "next/link"
 import NewsSection from "@/components/noticias/news-section"
 import NewsInterface from "@/interfaces/newsInterface"
 import { getDataNews } from "@/data/noticias"

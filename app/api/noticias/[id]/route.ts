@@ -2,11 +2,10 @@ import { NextResponse, NextRequest } from 'next/server'
 import db from "@/libs/db"
 import { uploadImage, deleteImage } from '@/libs/upload-image'
 import { revalidateTag } from 'next/cache'
-import { auth } from '../../auth/[...nextauth]/route'
-import { NextApiRequest } from 'next'
+import { auth } from '@/libs/auth'
 
 
-export async function GET(req: NextApiRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     try {
         let news;
         if(!Number(params.id)) {

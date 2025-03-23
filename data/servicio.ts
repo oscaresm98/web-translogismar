@@ -1,7 +1,6 @@
 'use server'
 import { headers } from "next/headers";
 
-const myHeaders = headers();
 
 export async function getDataServices() {
     const res = await fetch(`${process.env.API_URL}/servicios`, { next: { tags: ['dataServices'] } })
@@ -14,6 +13,7 @@ export async function getDataServices() {
 
 
 export async function updateService(data: FormData, id: number) {
+    const myHeaders = headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/servicios/${id}`, {
         method: "PUT",
@@ -27,6 +27,7 @@ export async function updateService(data: FormData, id: number) {
 }
 
 export async function createService(data: FormData) {
+    const myHeaders = headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/servicios`, {
         method: "POST",

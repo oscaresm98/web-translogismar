@@ -1,10 +1,11 @@
 'use server'
 import { headers } from "next/headers";
 
-const myHeaders = headers();
+
 
 
 export async function getDataClients() {
+  const myHeaders = headers();
   const res = await fetch(`${process.env.API_URL}/clientes`, { next: { tags: ['dataClients'] } })
   if (!res.ok) {
     throw new Error('No se pudo cargar la data')
@@ -14,6 +15,7 @@ export async function getDataClients() {
 }
 
 export async function createClient(data: FormData) {
+  const myHeaders = headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes`, {
     method: "POST",
@@ -27,6 +29,7 @@ export async function createClient(data: FormData) {
 }
 
 export async function updateClient(data: FormData, id: number) {
+  const myHeaders = headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes/${id}`, {
     method: "PUT",
@@ -40,6 +43,7 @@ export async function updateClient(data: FormData, id: number) {
 }
 
 export async function deleteClient(id: number) {
+  const myHeaders = headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes/${id}`, {
     method: "DELETE",

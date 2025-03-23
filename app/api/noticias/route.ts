@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from "@/libs/db"
-import { auth } from '../auth/[...nextauth]/route'
+import { auth } from '@/libs/auth'
 import { uploadImage } from '@/libs/upload-image'
 import { revalidateTag } from 'next/cache'
 
@@ -28,7 +28,6 @@ export async function POST(req: NextRequest) {
                 email: formData.get('user') as string
             }
         })
-        console.log("el usuario es:" + userFound)
         if (userFound) data.authorId = +userFound?.id;
 
         const newsFound = await db.news.findUnique({
