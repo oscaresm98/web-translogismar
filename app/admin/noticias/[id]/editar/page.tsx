@@ -6,7 +6,7 @@ async function getDataNews(id: string) {
   try {
     const res = await fetch(`${process.env.API_URL}/noticias/${id}`, {
       method: "GET",
-      next: { tags: ['dataNews'] }
+      next: { tags: ['dataNew'] }
     });
     if (!res.ok) {
       throw new Error('No se pudo cargar la data');
@@ -21,7 +21,7 @@ async function getDataNews(id: string) {
 export default async function EditarNoticia({ params }: { params: { id: string } }) {
   const noticia = await getDataNews(params.id) as NewsInterface;
 
-  if (Object.keys(noticia).length === 1) {
+  if ('error' in noticia) {
     redirect('/admin/noticias');
   }
   return (
