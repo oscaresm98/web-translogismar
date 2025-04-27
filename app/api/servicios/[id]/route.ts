@@ -24,7 +24,18 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
         if (!service) {
             return NextResponse.json({ message: "Servicio no encontrado" }, { status: 404 })
         }
-        return NextResponse.json(service)
+        
+        // Configurar headers de caché para respuestas GET
+        const response = NextResponse.json(service);
+        
+        // Permitir caché por 1 hora (3600 segundos)
+        response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+        
+        // Añadir ETag para validación condicional
+        const etag = `"${service.id}-${service.updateAt}"`; 
+        response.headers.set('ETag', etag);
+        
+        return response;
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 500, statusText: error.message })
     }
@@ -64,7 +75,12 @@ export async function PUT(req: NextRequest, { params }: { params: { id: number }
         })
         revalidateTag('dataService')
         revalidateTag('dataServices')
-        return NextResponse.json(service)
+        
+        // Asegurar que las respuestas PUT no se almacenen en caché
+        const response = NextResponse.json(service);
+        response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+        
+        return response;
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 500 })
     }

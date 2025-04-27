@@ -2,7 +2,7 @@
 import Link from "next/link"
 import Cliente from "@/components/admin/clientes/cliente"
 import { ClientInteface } from "@/interfaces/clientInterface"
-import { getClientsPrisma } from "@/data/prismaCliesntes"
+import { getClientsPrisma } from "@/data/prismaClientes"
 
 
 export default async function ClientesPage() {

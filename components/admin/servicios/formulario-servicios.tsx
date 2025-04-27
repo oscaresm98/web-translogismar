@@ -129,7 +129,7 @@ export default function FormularioServicios({ service }: { service: ServiceInter
         type="file"
         id="imageURL"
         className="block w-full text-sm text-gray-800 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-[#0230E6] hover:file:bg-sky-100"
-        accept="image/jpg,image/jpeg,image/png,image/gif"
+        accept="image/jpg,image/jpeg,image/png,image/gif,image/webp"
         defaultValue={""}
         {...register("imageURL", {
           required: false
@@ -137,14 +137,20 @@ export default function FormularioServicios({ service }: { service: ServiceInter
         onChange={handleImageChange}
       />
 
-      <Image
-        src={imagePreview ? imagePreview : logo}
-        alt="Imagen previsualización"
-        className="mx-auto rounded-lg object-cover border border-blue-300 my-2"
-        loading='lazy'
-        width={256}
-        height={256}
-      />
+      <div className="mt-4 mb-6 flex flex-col items-center">
+        <p className="text-sm text-gray-500 mb-2">Vista previa de la imagen:</p>
+        <Image
+          src={imagePreview ? imagePreview : logo}
+          alt="Imagen previsualización"
+          className="rounded-lg object-cover border border-blue-300 my-2"
+          loading='lazy'
+          width={256}
+          height={256}
+          quality={75}
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjY2NjY2NjIi8+PC9zdmc+"
+        />
+      </div>
 
       <input
         type="submit"

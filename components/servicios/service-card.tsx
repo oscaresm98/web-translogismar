@@ -11,10 +11,14 @@ export default function ServiceCard({ service, position }: { service: ServiceInt
       <Image
         src={service.imageURL}
         alt={`imagen de ${service.name}`}
-        className="max-h-[365px]"
+        className="max-h-[365px] object-cover"
         loading="lazy"
         width={600}
         height={600}
+        quality={80}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+        placeholder="blur"
+        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjY2NjY2NjIi8+PC9zdmc+"
       />
       <div className="flex flex-col gap-2 p-4">
         <h2 className="text-4xl text-secun text-center font-light">{service.name}</h2>
