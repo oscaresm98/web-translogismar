@@ -29,19 +29,46 @@ export default function FormularioNuevo() {
   }
 
   const onSubmit = handleSubmit(async data => {
-    setLoading(true)
-    const formData = new FormData()
-    formData.append("image", data.imageURL[0])
-    formData.append("user", session?.user?.email as string)
-    data = { ...data, "imageURL": "imagePreview" }
-    formData.append("recipe", JSON.stringify(data))
-    const res = await createService(formData)
-    if (res && Object.keys(res).length > 1) {
+    try {
+      setLoading(true)
+      const formData = new FormData()
+      
+      // Asegurarse de que la imagen esté correctamente adjuntada al FormData
+      if (data.imageURL && data.imageURL[0]) {
+        formData.append("image", data.imageURL[0])
+      }
+      
+      formData.append("user", session?.user?.email as string)
+      
+      // No sobreescribir imageURL con una cadena fija "imagePreview"
+      // Solo enviar los datos necesarios sin modificar imageURL
+      const serviceData = {
+        name: data.name,
+        description: data.description,
+        location: data.location,
+        phrase: data.phrase
+      }
+      
+      formData.append("recipe", JSON.stringify(serviceData))
+      
+      const res = await createService(formData)
+      
+      if (res && Object.keys(res).length > 1) {
+        setLoading(false)
+        router.push('/admin/servicios')
+        router.refresh()
+      } else {
+        setLoading(false)
+        alert("Ocurrió un error al crear el servicio")
+        console.error("Error en la respuesta:", res)
+      }
+    } catch (error) {
       setLoading(false)
-      router.push('/admin/servicios')
-      router.refresh()
+      console.error("Error al enviar el formulario:", error)
+      alert("Ocurrió un error al crear el servicio")
     }
   })
+  
   return (
     <form onSubmit={onSubmit} className='my-4'>
       <label htmlFor="name" className='block font-bold text-[#0230E6] uppercase'>Nombre</label>
@@ -131,7 +158,6 @@ export default function FormularioNuevo() {
             value: true,
             message: "La imagen es requerida"
           }
-
         })}
         onChange={handleImageChange}
       />

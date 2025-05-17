@@ -1,8 +1,6 @@
 'use server'
 import { headers } from "next/headers";
-
-
-
+import { revalidateTag } from 'next/cache';
 
 export async function getDataClients() {
   const myHeaders = headers();
@@ -22,9 +20,14 @@ export async function createClient(data: FormData) {
     body: data,
     headers: {
       'cookie': myCookies
-    }
+    },
+    cache: 'no-store' // Asegura que no se usa caché para esta solicitud
   })
   const respuesta = await res.json()
+  
+  // Revalidar la caché después de crear un nuevo cliente
+  revalidateTag('dataClients');
+  
   return respuesta
 }
 
@@ -36,9 +39,14 @@ export async function updateClient(data: FormData, id: number) {
     body: data,
     headers: {
       'cookie': myCookies
-    }
+    },
+    cache: 'no-store'
   })
   const respuesta = await res.json()
+  
+  // Revalidar la caché después de actualizar
+  revalidateTag('dataClients');
+  
   return respuesta
 }
 
@@ -49,8 +57,13 @@ export async function deleteClient(id: number) {
     method: "DELETE",
     headers: {
       'cookie': myCookies
-    }
+    },
+    cache: 'no-store'
   })
   const respuesta = await res.json()
+  
+  // Revalidar la caché después de eliminar
+  revalidateTag('dataClients');
+  
   return respuesta
 }

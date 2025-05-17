@@ -27,14 +27,22 @@ function MisionVision({enterprise}: MisionVisionProps) {
             >
                 <FontAwesomeIcon icon={faArrowsToDot} className="text-white mt-10" size="7x" />
                 <h2 className="text-4xl text-white font-bold mt-5">Misión</h2>
-                <p className="text-white text-center mt-5">{enterprise.descMision}</p>
+                <div className="text-white text-center mt-5 prose prose-invert max-w-none">
+                    {enterprise.descMision.split('\n').map((paragraph, idx) => (
+                        <p key={idx} className="my-2">{paragraph}</p>
+                    ))}
+                </div>
             </div>
             <div
                 className={`flex flex-col items-center self-start transition-all duration-500 delay-150 ${readyMV ? 'translate-x-0 opacity-100' : 'translate-x-[10rem] opacity-0'}`}
             >
                 <FontAwesomeIcon icon={faArrowsToDot} className="text-white mt-10" size="7x" />
                 <h2 className="text-4xl text-white font-bold mt-5">Visión</h2>
-                <p className="text-white text-center mt-5">{enterprise.descVision}</p>
+                <div className="text-white text-center mt-5 prose prose-invert max-w-none">
+                    {enterprise.descVision.split('\n').map((paragraph, idx) => (
+                        <p key={idx} className="my-2">{paragraph}</p>
+                    ))}
+                </div>
             </div>
         </div>
     )

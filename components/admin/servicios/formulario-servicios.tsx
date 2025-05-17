@@ -9,8 +9,6 @@ import logo from '@/public/img/logoMundo.svg'
 import { updateService } from '@/data/servicio';
 
 export default function FormularioServicios({ service }: { service: ServiceInterface }) {
-  // const { data: session, status } = useSession()
-  // console.log(session)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const router = useRouter()
   const [imagePreview, setImagePreview] = useState<string>(service?.imageURL);
@@ -30,24 +28,48 @@ export default function FormularioServicios({ service }: { service: ServiceInter
   }
 
   const onSubmit = handleSubmit(async data => {
-    setLoading(true)
-    const formData = new FormData()
-    if (data.imageURL.length) {
-      formData.append("image", data.imageURL[0])
-    } else {
-      formData.append("image", "")
-    }
+    try {
+      setLoading(true)
+      const formData = new FormData()
+      
+      // Manejar la imagen correctamente
+      if (data.imageURL && data.imageURL.length) {
+        formData.append("image", data.imageURL[0])
+      } else {
+        formData.append("image", "")
+      }
 
-    data = { ...data, "imageURL": service?.imageURL }
-    formData.append("recipe", JSON.stringify(data))
-    const res = await updateService(formData, service.id)
-    if (res && Object.keys(res).length > 1) {
+      // Crear un objeto con los datos del servicio sin modificar imageURL
+      const serviceData = {
+        name: data.name,
+        description: data.description,
+        location: data.location,
+        phrase: data.phrase,
+        imageURL: service?.imageURL // Mantener la URL de imagen actual si no se sube una nueva
+      }
+      
+      formData.append("recipe", JSON.stringify(serviceData))
+      
+      const res = await updateService(formData, service.id)
+      
+      if (res && Object.keys(res).length > 1) {
+        setLoading(false)
+        
+        // Recargar la página y redirigir
+        router.refresh() 
+        router.push('/admin/servicios')
+      } else {
+        setLoading(false)
+        alert("Ocurrió un error al actualizar el servicio")
+        console.error("Error en la respuesta:", res)
+      }
+    } catch (error) {
       setLoading(false)
-      router.push('/admin/servicios')
-      router.refresh()
+      console.error("Error al enviar el formulario:", error)
+      alert("Ocurrió un error al actualizar el servicio")
     }
-
   })
+  
   return (
     <form onSubmit={onSubmit} className='my-4'>
       <label htmlFor="name" className='block font-bold text-[#0230E6] uppercase'>Nombre</label>

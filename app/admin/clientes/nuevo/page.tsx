@@ -9,6 +9,7 @@ import { createClient } from "@/data/clientes";
 export default function NewClientPage() {
   // const { data: session, status } = useSession()
   const [loading, setLoading] = useState(false)
+  const [imagePreview, setImagePreview] = useState<string>("/img/logoMundo.svg")
   const router = useRouter()
   const initialValues: ClientFormType = {
     name: "",
@@ -17,17 +18,52 @@ export default function NewClientPage() {
   }
   const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues });
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
+      }
+      if (file) {
+        reader.readAsDataURL(file)
+      }
+    }
+  }
+
   const onSubmit = handleSubmit(async data => {
-    setLoading(true)
-    const formData = new FormData()
-    formData.append("image", data.imageURL[0])
-    data = { ...data, "imageURL": "imagePreview" }
-    formData.append("recipe", JSON.stringify(data))
-    const res = await createClient(formData)
-    if (res && Object.keys(res).length > 1) {
+    try {
+      setLoading(true)
+      const formData = new FormData()
+      
+      // Asegurarse de que la imagen esté correctamente adjuntada al FormData
+      if (data.imageURL && data.imageURL[0]) {
+        formData.append("image", data.imageURL[0])
+      }
+      
+      // Copiar los datos sin modificar imageURL para mantener la estructura que espera el backend
+      const clientData = {
+        name: data.name,
+        description: data.description
+      }
+      
+      formData.append("recipe", JSON.stringify(clientData))
+      
+      const res = await createClient(formData)
+      
+      if (res && Object.keys(res).length > 1) {
+        setLoading(false)
+        router.push('/admin/clientes')
+        router.refresh()
+      } else {
+        setLoading(false)
+        alert("Ocurrió un error al crear el cliente")
+        console.error("Error en la respuesta:", res)
+      }
+    } catch (error) {
       setLoading(false)
-      router.push('/admin/clientes')
-      router.refresh()
+      console.error("Error al enviar el formulario:", error)
+      alert("Ocurrió un error al crear el cliente")
     }
   })
 
@@ -44,6 +80,7 @@ export default function NewClientPage() {
         <ClientForm
           register={register}
           errors={errors}
+          previewImage={imagePreview}
         />
 
         <input

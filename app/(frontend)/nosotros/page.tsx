@@ -23,8 +23,10 @@ export default async function Nosotros() {
               url={nosotros[0].ImageURL}
               alternative='imagen de Nosotros'
             />
-          <div>
-            <p>{nosotros[0].descHistory}</p>
+          <div className="prose prose-lg max-w-none">
+            {nosotros[0].descHistory.split('\n').map((paragraph, idx) => (
+              <p key={idx} className="my-4">{paragraph}</p>
+            ))}
           </div>
         </div>
       </main>
