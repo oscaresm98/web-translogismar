@@ -47,7 +47,7 @@ export default function NewClientPage() {
         description: data.description
       }
       
-      formData.append("recipe", JSON.stringify(clientData))
+      formData.append("client", JSON.stringify(clientData))
       
       const res = await createClient(formData)
       

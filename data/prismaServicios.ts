@@ -15,6 +15,6 @@ export const getServicesPrisma = unstable_cache(
   ['services-list'],
   {
     tags: ['dataServices'], // Tag consistente para revalidación
-    revalidate: 30 // Revalidación cada 30 segundos como compromiso entre rendimiento y frescura
+    revalidate: 10 // Revalidación cada 30 segundos como compromiso entre rendimiento y frescura
   }
 )

@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       if (!session) return NextResponse.json({ error: 'Usuario no autenticado', }, { status: 401 })
       const formData = await req.formData();
       const image = formData.get('image') as unknown as File;
-      const data = JSON.parse(formData.get("recipe") as string);
+      const data = JSON.parse(formData.get("client") as string);
       const folder = "translogismar/clients"
       const imageCloudinary: any = await uploadImage(image, folder);
       data.imageURL = imageCloudinary.secure_url;

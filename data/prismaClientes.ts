@@ -14,7 +14,7 @@ export const getClientsPrisma = unstable_cache(
   ['clients-list'],
   {
     tags: ['dataClients'], // Tag consistente para revalidación
-    revalidate: 30 // Revalidación cada 30 segundos
+    revalidate: 10 // Revalidación cada 30 segundos
   }
 )
 
