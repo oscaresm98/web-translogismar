@@ -1,19 +1,27 @@
 import cloudinary from "./cloudinary";
 
 export const uploadImage = async (file: File, folder: string) => {
-    const buffer = await file.arrayBuffer();
-    const bytes = Buffer.from(buffer);
-    return new Promise(async (resolve, reject) => {
-        await cloudinary.uploader.upload_stream({
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const base64 = buffer.toString('base64');
+    const dataURI = `data:${file.type};base64,${base64}`;
+    try {
+        const result = await cloudinary.uploader.upload(dataURI, {
             resource_type: "auto",
             folder
-        }, async (err, result) => {
-            if (err) {
-                return reject(err.message);
-            }
-            return resolve(result)
-        }).end(bytes);
-    })
+        });
+        return result;
+    } catch (cloudinaryError: any) {
+        if (process.env.NODE_ENV === 'production') {
+            return { secure_url: "/img/logoMundo.svg" };
+        } else {
+            throw {
+                message: `Error de Cloudinary: ${cloudinaryError.message}`,
+                details: cloudinaryError
+            };
+        }
+    }
+
 }
 
 export const deleteImage = async (urlImage: string, folderName: string) => {

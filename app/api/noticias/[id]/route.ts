@@ -69,3 +69,40 @@ export async function PUT(req: NextRequest, { params }: { params: { id: number }
         return NextResponse.json({ message: error.message }, { status: 500 })
     }
 }
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+    try {
+        const session = await auth();
+        if (!session) return NextResponse.json({ error: 'Usuario no autenticado', }, { status: 401 })
+        
+        const noticia = await db.news.findUnique({
+            where: {
+                id: +params.id
+            }
+        })
+
+        if (!noticia) {
+            return NextResponse.json({ message: "Noticia no encontrada" }, { status: 404 })
+        }
+
+        // Eliminar imagen asociada de Cloudinary si existe
+        if (noticia.imageURL) {
+            await deleteImage(noticia.imageURL, "translogismar/noticias");
+        }
+
+        // Eliminar la noticia de la base de datos
+        await db.news.delete({
+            where: {
+                id: +params.id
+            }
+        })
+
+        // Revalidar los datos para actualizar las listas en la UI
+        revalidateTag('dataNew')
+        revalidateTag('dataNews')
+        
+        return NextResponse.json({ message: "Noticia eliminada correctamente" })
+    } catch (error: any) {
+        return NextResponse.json({ message: error.message }, { status: 500 })
+    }
+}
