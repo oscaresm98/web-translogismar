@@ -18,7 +18,7 @@ export default function Spots() {
         </svg>
 
         <h3 className="text-3xl uppercase font-semibold text-[#ff6a0f] my-7">Seguridad</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A ad quidem rem eos vitae! Aliquid dolore dolores asperiores reprehenderit velit animi quia unde aut, distinctio magni ea rem labore sit?</p>
+        <p>Es esencial asegurar correctamente la carga, utilizar vehículos adecuados y seguir las normativas vigentes.La vigilancia constante y la planificación de rutas seguras son claves para un transporte eficiente y seguro</p>
       </div>
 
       <div
@@ -34,7 +34,7 @@ export default function Spots() {
           <path d="M5 15v1m0 -8v1" />
         </svg>
         <h3 className="text-3xl uppercase font-semibold text-[#ff6a0f] my-7">Precio</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam praesentium vel quod distinctio ipsam consequatur eveniet, suscipit minima non quibusdam repellat tempora sunt, dolorum, impedit delectus reiciendis nobis excepturi qui!</p>
+        <p>Optimizamos costos operativos y negociar tarifas con proveedores. tarifas accesibles sin sacrificar la calidad del servicio, fomentando relaciones duraderas. La transparencia en la fijación de precios también genera confianza entre los clientes</p>
       </div>
 
       <div 
@@ -47,7 +47,7 @@ export default function Spots() {
           <path d="M12 7v5" />
         </svg>
         <h3 className="text-3xl uppercase font-semibold text-[#ff6a0f] my-7">Tiempo</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab dolore dicta qui corrupti, non exercitationem ratione recusandae laboriosam molestias adipisci suscipit, reprehenderit repudiandae provident aliquam? Alias aspernatur est repellendus veniam!</p>
+        <p>El tiempo en el transporte de mercadería es un factor clave que impacta la satisfacción del cliente. Cumplir con los plazos de entrega establecidos no solo mejora la eficiencia operativa, sino que también fortalece la confianza del cliente.</p>
       </div>
 
     </div>

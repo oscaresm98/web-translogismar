@@ -44,6 +44,7 @@ interface SeedClient {
 }
 
 interface SeedUser {
+  id: number
   email: string;
   name: string;
   password: string;
@@ -60,18 +61,19 @@ interface SeedData {
 
 export const initialData: SeedData = {
   users: {
-      email: "correo@correo.com",
-      name: "Nereida Sanchez",
+      email: "admin@grupomstransporte.com",
+      name: "Administrador",
       password: bcrypt.hashSync("Nereida123", 10),
+      id: 1
     },
   services: [
     {
-      name: "Transporte Terrestre",
+      name: "Transporte terreste de carga liviana",
       location: "En todo el país",
-      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712360279/translogismar/seed/iyelfhrm52w4wpa3sl2j.jpg",
-      description: "Ofrecemos un transporte confiable y seguro de carga pesada en todo el país. Ya sea para envíos locales o nacionales, nuestro equipo de expertos se encargará de entregar su carga de manera eficiente y en perfectas condiciones.",
-      phrase: "El Mejor Servicio del Mercado",
-      slug: "transporte_terrestre",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712361346/translogismar/seed/hfhvz8hwdubxmd2xbgjo.jpg",
+      description: "El mejor servicio de transporte liviano, encargado de garantizar la eficiencia, puntualidad y responsabilidad de las rutas y cargas que transportamos con un limite de peso de 3.5 toneladas segun los reglamentos a nivel nacional.",
+      phrase: "Mejor solucion en transporte de carga liviana",
+      slug: "transporte_terreste_de_carga_liviana",
       authorId: 1
     },
     {
@@ -87,17 +89,17 @@ export const initialData: SeedData = {
       name: "Mudanza Residencial y Comercial",
       location: "Solo Guayaquil",
       imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712360772/translogismar/seed/civn5uygl3x8nfzd5drb.jpg",
-      description: "Facilitamos sus mudanzas con nuestro servicio profesional de mudanza. Ya sea para hogares o negocios, nuestro equipo se encarga de embalar, transportar y desembalar sus pertenencias con cuidado y eficiencia, garantizando una transición sin problemas.",
+      description: "Facilitamos sus mudanzas con nuestro servicio profesional de mudanza. Ya sea para hogares o negocios, nuestro equipo se encarga de embalar, transportar y bajar sus pertenencias con cuidado y eficiencia, garantizando una transición sin problemas.",
       phrase: "Con Más de 10 Años de Experiencia",
       slug: "mudanza_residencial_y_comercial",
       authorId: 1
     },
     {
-      name: "Candado Satelital",
+      name: "Transporte Terrestre de carga pesada",
       location: "En todo el país",
-      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712361346/translogismar/seed/hfhvz8hwdubxmd2xbgjo.jpg",
-      description: "Introducimos una capa adicional de seguridad a su carga con nuestro servicio de seguimiento mediante candado satelital. Con esta tecnología avanzada, puede monitorear la ubicación y el estado de su carga en tiempo real. Aumente la visibilidad y la tranquilidad, asegurando que sus envíos estén siempre bajo control y protegidos durante todo el trayecto. Confíe en Translogismar SA para un transporte más seguro y confiable.",
-      phrase: "La Solución Sobre Ruedas",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712360279/translogismar/seed/iyelfhrm52w4wpa3sl2j.jpg",
+      description: "Ofrecemos un transporte confiable y seguro de carga pesada en todo el país. Ya sea para envíos locales o nacionales, nuestro equipo de expertos se encargará de entregar su carga de manera eficiente y en perfectas condiciones.",
+      phrase: "El mejor servicio de transporte ",
       slug: "candato_satelital",
       authorId: 1
     }
@@ -127,15 +129,15 @@ export const initialData: SeedData = {
     }
   ],
   enterprise: {
-    ImageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712359819/translogismar/seed/jq3jfbdnnip8wvfuguqh.jpg", 
-    descHistory: `Fusce sed nhhhh odio dictum quam iaculis ullamcorper. Nam id erat magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis eu tellus ut arcu pellentesque condimentum. Integer pharetra neque id fermentum dapibus. Integer sit amet tempus tellus. Aenean nulla tellus, aliquet in laoreet eu, varius at quam.
-    Fusce sed odio dictum quam iaculis ullamcorper. Nam id erat magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis eu tellus ut arcu pellentesque condimentum. Integer pharetra neque id fermentum dapibus. Integer sit amet tempus tellus.
-    Fusce sed odio dictum quam iaculis ullamcorper. Nam id erat magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis eu tellus ut arcu pellentesque condimentum. Integer pharetra neque id fermentum dapibus. Integer sit amet tempus tellus. Aenean nulla tellus, aliquet in laoreet eu, varius at quam.`,
-    descMision: "Nuestra misión es ofrecer soluciones de transporte terrestre de carga pesada que superen las expectativas de nuestros clientes. Nos comprometemos a proporcionar servicios seguros, eficientes y personalizados, impulsados por la innovación y la excelencia operativa. Con cada entrega, buscamos fortalecer alianzas duraderas, contribuir al desarrollo sostenible y consolidarnos como líderes en la industria.",
-    descVision: "Nuestra visión es ser reconocidos como el referente en el transporte terrestre de carga pesada, destacando por nuestra integridad, eficiencia y compromiso con la excelencia. Aspiramos a expandir nuestra presencia de manera sostenible, aprovechando tecnologías emergentes y prácticas ambientalmente responsables. Buscamos ser la elección preferida de clientes que valoran la calidad, la confianza y la innovación en el transporte de sus cargas.",
+    ImageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747877410/translogismar/nosotros/be6isopytvtqg9rjrpmf.jpg", 
+    descHistory: `En el competitivo mundo del transporte y la logística, es esencial contar con un aliado que garantice el mejor servicio y eficiencia en cada entrega. Permítanme presentarles al grupo logístico MS, una alianza estratégica conformada por Translogismar S.A. y Transcarlight S.A., dos empresas con una reputación intachable, estas compañías ofrecen servicios personalizados que se adaptan a las necesidades específicas de cada cliente, asegurando que cada carga o paquete llegue a su destino de manera puntual y en perfectas condiciones. 
+    
+    Transcarlight S.A. se especializa en rutas de reparticion, entregas urgentes con una flota de vehiculos de carga liviana. Por otro lado, Translogismar S.A. destaca en la gestión y logistica del transporte de mercaderia pesada, ofreciendo soluciones integrales que optimizan cada paso del proceso logístico. Juntas, estas empresas forman un equipo imbatible conformado con vehiculos y choferes altamente capacitados que garantiza la satisfacción del cliente y la reducción de costos operativos, elegir nuestro grupo logístico es optar por la tranquilidad de saber que sus productos están en las mejores manos.`,
+    descMision: "Nuestra mision es proporcionar soluciones integrales y eficientes de movilidad que superen las expectativas de sus clientes. El grupo se dedica a garantizar la entrega segura y puntual de mercancías, promoviendo un entorno de colaboración y confianza con sus socios y empleados. Además, busca mejorar continuamente sus procesos para satisfacer las necesidades cambiantes del mercado, Con cada entrega buscamos fortalecer alianzas duraderas, contribuir al desarrollo sostenible y consolidarnos como líderes en la industria.",
+    descVision: "Nuestra vision es ser el líder reconocido en la industria, proporcionando soluciones de transporte innovadoras, eficientes y sostenibles. Este grupo garantiza la entrega puntual y segura de mercancías, con un enfoque en la mejora continua. Además, se compromete a fomentar un entorno de trabajo inclusivo y colaborativo, en el que cada miembro del equipo se sienta valorado y motivado para contribuir al éxito colectivo, buscamos ser la elección preferida de clientes que valoran la calidad, la confianza y la innovación en el transporte de sus cargas.",
     address: "Guayaquil - Prosperina km. 6.5 vía Daule",
     phone: "04260462",
-    cellphone: "0999999918"
+    cellphone: "0958989766"
   },
   socialMedia: [
     {
@@ -157,14 +159,29 @@ export const initialData: SeedData = {
   ],
   clients: [
     {
-      name: "Holcim",
-      description: "Empresa de contruccion",
-      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712359610/translogismar/seed/ld4tbewaklrldizitvqp.png"
+      name: "COMEXPORT",
+      description: "Depósito Aduanero Público con más de 25 años",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747669690/translogismar/clients/riy2wfyxjlzrag3qyn5z.jpg"
     },
     {
-      name: "Arcor",
-      description: "Empresa de bebidas",
-      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1712359725/translogismar/seed/rzlbykdhgjb6lhuo9g8v.png"
+      name: "LAARCOURIER",
+      description: "Empresas de envíos en ecuador. Entregan los paquetes de su emprendimiento con seguridad en todo el Ecuador.",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747671400/translogismar/clients/wjprepx5tvblw3rhm6qz.jpg"
+    },
+    {
+      name: "PINTURAS UNIDAS",
+      description: "Empresa de venta de las mejores pinturas para todo tipo de superficie.",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747671825/translogismar/clients/os14rglche0ofsyir8sp.png"
+    },
+    {
+      name: "BIG VISION",
+      description: "Empresa especializada en la impresión en gran formato donde incorporan técnicas de impresión UV y solvente con maquinarias de última generación.",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747673123/translogismar/clients/kh98ycozmjl78gmvaqfq.png"
+    },
+    {
+      name: "NORVEMPRO",
+      description: "Empresa dedicada a la operacion de venta a comerciantes al por Mayor de Medicamentos y Productos Relacionados.",
+      imageURL: "https://res.cloudinary.com/dadruqmzw/image/upload/v1747877857/translogismar/clients/vue6bzoagc3ljsqzqp6u.png"
     }
   ]
 }

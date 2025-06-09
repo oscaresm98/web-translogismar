@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   description: 'Últimas noticias y actualizaciones sobre servicios de transporte, logística y mudanzas. Mantente informado con M.S. Grupo Logístico.',
   keywords: ['noticias transporte', 'actualizaciones logística', 'M.S. Grupo Logístico', 'sector transporte', 'logística Ecuador'],
   alternates: {
-    canonical: 'https://web-translogismar.vercel.app/noticias',
+    canonical: 'https://grupomstransporte.com/noticias',
   },
   openGraph: {
     title: 'Noticias y Actualizaciones | M.S. Grupo Logístico',
     description: 'Mantente al día con las últimas novedades del sector de transporte, logística y mudanzas con M.S. Grupo Logístico.',
-    url: 'https://web-translogismar.vercel.app/noticias',
+    url: 'https://grupomstransporte.com/noticias',
     siteName: 'M.S. Grupo Logístico',
     locale: 'es_EC',
     type: 'website',

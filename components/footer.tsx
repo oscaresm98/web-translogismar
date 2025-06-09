@@ -56,9 +56,9 @@ const Footer = () => {
                 width={100}
               />
             </Link>
-            <p className="font-bold text-blue-950">Grupo Logístico</p>
+            <p className="font-bold text-blue-950">Grupo MS Transporte</p>
           </div>
-          <p className="text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus doloremque quo ipsa delectus iure aut rerum nobis. Cumque eum, dolor quo beatae, voluptatibus ex est nesciunt debitis perferendis tempore odio.</p>
+          <p className="text-sm">Grupo Logístico MS Transporte ofrece soluciones integrales para el manejo eficiente de su mercadería.</p>
         </div>
 
         <div className="flex flex-col gap-3 mt-8 w-[80%] md:w-auto h-full">
