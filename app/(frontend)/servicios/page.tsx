@@ -3,6 +3,8 @@ import Link from "next/link"
 import ServiceCard from "@/components/servicios/service-card"
 import ServiceInterface from "@/interfaces/serviceInterface"
 import { getServicesPrisma } from "@/data/prismaServicios"
+import FadeIn from "@/components/transitions/fade-in"
+import StaggerContainer, { StaggerItem } from "@/components/transitions/stagger-container"
 
 
 
@@ -14,23 +16,100 @@ export const metadata: Metadata = {
 export default async function Sercivios() {
   const servicesData = await getServicesPrisma() as ServiceInterface[]
   return (
-    <main className="container md:px-8">
-      <h1 className="text-5xl text-prima text-center font-bold my-12">Transporte de Carga Pesada</h1>
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-center">
-        {
-          servicesData?.map((service, i) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              position={i}
-            />
-          ))
-        }
-      </div>
-      <div className="text-center">
-        <h3 className="font-bold text-gray-400 text-3xl block my-12">Para obtener Informacion mas detallada y personalizada ponte en contacto con nosotros</h3>
-        <Link href="/contacto" className="block md:inline-block bg-prima mb-12 transition duration-300 delay-150 hover:bg-[#9b5428] p-3 text-white font-semibold rounded-sm">Contáctanos</Link>
-      </div>
-    </main>
+    <>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white section-padding overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-transparent"></div>
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <FadeIn delay={0.2}>
+              <div className="inline-block">
+                <span className="text-accent-400 font-semibold text-lg tracking-wide uppercase">
+                  Nuestros Servicios
+                </span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.4}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Transporte de <span className="text-gradient">Carga Pesada</span>
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.6}>
+              <p className="text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+                Soluciones integrales de logística y transporte con la experiencia y confiabilidad que tu empresa necesita
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.8}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                <Link href="#servicios" className="btn-primary">
+                  Ver Servicios
+                </Link>
+                <Link href="/contacto" className="btn-outline border-white text-white hover:bg-white hover:text-dark-800">
+                  Solicitar Cotización
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-20 right-10 w-20 h-20 bg-accent-500/20 rounded-full blur-xl animate-bounce-subtle"></div>
+        <div className="absolute bottom-20 left-10 w-32 h-32 bg-accent-400/10 rounded-full blur-2xl animate-pulse-soft"></div>
+      </section>
+
+      {/* Services Grid */}
+      <main id="servicios" className="section-padding bg-gradient-to-b from-neutral-50 to-white">
+        <div className="container-custom">
+          <FadeIn delay={0.2}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-dark-800 mb-4">
+                Nuestros Servicios Especializados
+              </h2>
+              <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+                Cada servicio está diseñado para satisfacer las necesidades específicas de tu industria
+              </p>
+            </div>
+          </FadeIn>
+          
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {
+              servicesData?.map((service, i) => (
+                <StaggerItem key={service.id}>
+                  <ServiceCard
+                    service={service}
+                    position={i}
+                  />
+                </StaggerItem>
+              ))
+            }
+          </StaggerContainer>
+        </div>
+      </main>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-dark-800 text-white">
+        <div className="container-custom">
+          <FadeIn delay={0.3}>
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <h3 className="text-3xl md:text-4xl font-bold">
+                ¿Necesitas un Servicio <span className="text-gradient">Personalizado</span>?
+              </h3>
+              <p className="text-xl text-neutral-300 leading-relaxed">
+                Nuestro equipo de expertos está listo para crear una solución logística 
+                que se adapte perfectamente a las necesidades de tu empresa
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link href="/contacto" className="btn-primary">
+                  Contactar Especialista
+                </Link>
+                <Link href="/nosotros" className="btn-outline border-white text-white hover:bg-white hover:text-dark-800">
+                  Conocer Más
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   )
 }

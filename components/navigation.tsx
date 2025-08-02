@@ -20,43 +20,45 @@ export default function Navigation() {
     setIsOpen(false);
   };
   return (
-    <nav className="flex items-center md:w-auto md:gap-5 mt-4 md:mt-0 flex-col md:flex-row w-full md:relative">
+    <nav className="flex items-center md:w-auto md:gap-2 lg:gap-4 mt-4 md:mt-0 flex-col md:flex-row w-full md:relative">
       <Link
-        className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima ${currentRoute === "/" ? "text-prima" : ""}`}
+        className={`nav-link ${currentRoute === "/" ? "nav-link-active" : ""}`}
         href='/'>
         Inicio
       </Link>
       <div className="relative md:static w-full">
-        <p
+        <button
           onClick={toggleDropdown}
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
-          className={`uppercase text-secun font-bold w-full flex items-center justify-center gap-1 text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima hover:cursor-pointer ${currentRoute === "/servicios" ? "text-prima" : ""}`}
+          className={`nav-link nav-dropdown ${currentRoute === "/servicios" ? "nav-link-active" : ""}`}
         >
           Servicios
-          <FontAwesomeIcon icon={faChevronDown} className={`transition-transform duration-300 ${isOpen && 'rotate-180'}`} />
-        </p>
+          <FontAwesomeIcon 
+            icon={faChevronDown} 
+            className={`ml-1 text-xs transition-transform duration-300 ${isOpen && 'rotate-180'}`} 
+          />
+        </button>
         <div
-          onMouseEnter={openDropdown} onMouseLeave={closeDropdown}
-          className={`${isOpen && 'max-h-[450px] py-2'} overflow-hidden transition-all duration-300 delay-150 absolute top-full left-[4.16%] md:left-0 z-10 w-11/12 md:w-full rounded shadow-md bg-white max-h-0`}
+          onMouseEnter={openDropdown} 
+          onMouseLeave={closeDropdown}
+          className={`dropdown-menu ${isOpen ? 'dropdown-open' : ''}`}
         >
           <LinksServices />
         </div>
-        {/* {isOpen && (
-        )} */}
       </div>
       <Link
-        className={`${isOpen ? "mt-44 sm:mt-40 md:mt-0" : "mt-0"} uppercase text-secun font-bold w-full text-center text-sm p-2 transition-all duration-300 delay-150 hover:text-prima ${currentRoute === "/noticias" ? "text-prima" : ""}`}
+        className={`nav-link ${isOpen ? "md:mt-0" : ""} ${currentRoute === "/noticias" ? "nav-link-active" : ""}`}
         href='/noticias'>
         Noticias
       </Link>
       <Link
-        className={`${isOpen ? "mt-44 sm:mt-40 md:mt-0" : "mt-0"} uppercase text-secun font-bold w-full text-center text-sm p-2 transition-all duration-300 delay-150 hover:text-prima ${currentRoute === "/nosotros" ? "text-prima" : ""}`}
+        className={`nav-link ${isOpen ? "md:mt-0" : ""} ${currentRoute === "/nosotros" ? "nav-link-active" : ""}`}
         href='/nosotros'>
         Nosotros
       </Link>
       <Link
-        className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-150 hover:text-prima ${currentRoute === "/contacto" ? "text-prima" : ""}`}
+        className={`nav-link ${currentRoute === "/contacto" ? "nav-link-active" : ""}`}
         href='/contacto'>
         Contacto
       </Link>
