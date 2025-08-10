@@ -15,19 +15,12 @@ export default function Contacto() {
       ></div>
       
       {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-24 h-24 bg-accent-500/20 rounded-full blur-xl animate-bounce-subtle"></div>
+      {/* <div className="absolute top-20 right-10 w-24 h-24 bg-accent-500/20 rounded-full blur-xl animate-bounce-subtle"></div> */}
       <div className="absolute bottom-20 left-10 w-32 h-32 bg-accent-400/10 rounded-full blur-2xl animate-pulse-soft"></div>
       
       <div ref={contRef} className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           
-          {/* Badge */}
-          <div className={`inline-block transition-all duration-700 delay-150 ${readyCont ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span className="text-accent-400 font-semibold text-lg tracking-wide uppercase bg-accent-500/10 px-4 py-2 rounded-full border border-accent-500/20">
-              Servicio Premium
-            </span>
-          </div>
-
           {/* Main Heading */}
           <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-700 delay-300 ${readyCont ? 'translate-x-0 opacity-100' : 'translate-x-[-2rem] opacity-0'}`}>
             Encuentra el <span className="text-gradient">Mejor Servicio</span> del Mercado

@@ -3,28 +3,14 @@ import NewsSection from "@/components/noticias/news-section"
 import NewsInterface from "@/interfaces/newsInterface"
 import { getNewsPrisma } from "@/data/prismaNoticias"
 
-// Definir opciones de revalidación para ISR (Incremental Static Regeneration)
-export const revalidate = 3600; // Revalidar cada hora
-
 export const metadata: Metadata = {
-  title: 'Noticias | M.S. Grupo Logístico',
-  description: 'Últimas noticias y actualizaciones sobre servicios de transporte, logística y mudanzas. Mantente informado con M.S. Grupo Logístico.',
-  keywords: ['noticias transporte', 'actualizaciones logística', 'M.S. Grupo Logístico', 'sector transporte', 'logística Ecuador'],
-  alternates: {
-    canonical: 'https://grupomstransporte.com/noticias',
-  },
+  title: 'Noticias - MS Translogismar',
+  description: 'MS Translogismar - Últimas noticias, novedades y tendencias del sector transporte y logística en Ecuador. Mantente informado sobre la industria.',
+  keywords: ['noticias transporte Ecuador', 'novedades logística', 'sector transporte Ecuador', 'MS Translogismar noticias'],
   openGraph: {
-    title: 'Noticias y Actualizaciones | M.S. Grupo Logístico',
-    description: 'Mantente al día con las últimas novedades del sector de transporte, logística y mudanzas con M.S. Grupo Logístico.',
-    url: 'https://grupomstransporte.com/noticias',
-    siteName: 'M.S. Grupo Logístico',
-    locale: 'es_EC',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Noticias | M.S. Grupo Logístico',
-    description: 'Últimas noticias y actualizaciones sobre servicios de transporte, logística y mudanzas.',
+    title: 'Noticias - MS Translogismar',
+    description: 'Últimas noticias y novedades del sector transporte y logística en Ecuador.',
+    images: ['/img/banner-camiones.png'],
   },
 }
 

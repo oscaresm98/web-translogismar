@@ -2,8 +2,14 @@ import { Metadata } from 'next'
 import ContactForm from '@/components/contacto/contact-form'
 
 export const metadata: Metadata = {
-  title: 'Contacto',
-  description: 'Contáctanos a toda hora, M.S. Grupo Logístico. Empresa de transporte terrestre',
+  title: 'Contacto - MS Translogismar',
+  description: 'Contáctanos. MS Translogismar - Empresa líder en transporte de carga pesada en Ecuador. Respuesta en menos de 2 horas.',
+  keywords: ['contacto transporte Ecuador', 'cotización carga pesada', 'MS Translogismar contacto', 'transporte Ecuador'],
+  openGraph: {
+    title: 'Contacto - MS Translogismar',
+    description: 'Contáctanos. Respuesta en menos de 2 horas.',
+    images: ['/img/banner-camion.png'],
+  },
 }
 
 export default function Contacto() {
@@ -11,8 +17,22 @@ export default function Contacto() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-transparent"></div>
+      <section className="relative text-white section-padding overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/img/banner-camion.png')"
+          }}
+        ></div>
+        {/* Professional Dark Overlay - Multi-layer for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/45 to-slate-700/65"></div>
+        {/* Subtle bottom-up gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-900/75 via-transparent to-transparent"></div>
+        {/* Refined accent overlay - more professional */}
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-600/8 via-accent-500/12 to-transparent"></div>
+        {/* Subtle vignette effect */}
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-dark-900/30"></div>
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <div className="inline-block">
@@ -24,7 +44,7 @@ export default function Contacto() {
               <span className="text-gradient">Contáctanos</span> Hoy
             </h1>
             <p className="text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-              Nuestro equipo está disponible 24/7 para brindarte el mejor servicio. 
+              Nuestro equipo cuenta con disponibilidad Inmediata para brindarte el mejor servicio. 
               Respuesta garantizada en menos de 2 horas.
             </p>
             
@@ -45,10 +65,9 @@ export default function Contacto() {
             </div>
           </div>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-20 right-10 w-20 h-20 bg-accent-500/20 rounded-full blur-xl animate-bounce-subtle"></div>
-        <div className="absolute bottom-20 left-10 w-32 h-32 bg-accent-400/10 rounded-full blur-2xl animate-pulse-soft"></div>
+        {/* Additional decorative elements for enhanced elegance */}
+        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg animate-float"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-accent-300/10 rounded-full blur-2xl animate-pulse-soft"></div>
       </section>
 
       {/* Contact Section */}

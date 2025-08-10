@@ -11,11 +11,13 @@ function SloganNosotros() {
       ref={sloganRef}
       className={`my-12 transition-all duration-500 delay-150 ${isready ? 'opacity-100' : 'opacity-0'}`}
     >
+
       <Image
-        src={imagenPersonal}
-        alt="imagen de personal"
-        priority
-      />
+          className="block w-full h-auto [mask-image:linear-gradient(to_top,white_80%,transparent)]"
+          src={imagenPersonal}
+          alt="imagen de personal"
+          priority
+        />
       <div className="container">
         <h3 className="text-3xl font-bold text-prima text-center uppercase"><span className="text-secun font-black">Más que Transporte</span> Somos Compromiso</h3>
         <p className="mt-5 text-center">En MS Grupo Logístico el transporte de su carga va más allá de la logística. Es un compromiso total con la responsabilidad y la integridad. Nuestro equipo se dedica a garantizar que su carga llegue a su destino con la misma importancia que usted le otorga. Su carga es nuestra responsabilidad, y lo tomamos en serio.</p>

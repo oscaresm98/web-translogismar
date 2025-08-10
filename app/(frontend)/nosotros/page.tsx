@@ -7,8 +7,14 @@ import { getEnterprisesPrisma } from "@/data/prismaNosotros"
 
 
 export const metadata = {
-  title: 'Nosotros',
-  description: 'Sobre nosotros, M.s. Grupo Logístico. Empresa de transporte terrestre',
+  title: 'Nosotros - MS Translogismar',
+  description: 'Conoce MS Translogismar - Más de 20 años de experiencia en transporte de carga pesada en Ecuador. Historia, misión, visión y valores de nuestra empresa líder en logística.',
+  keywords: ['MS Translogismar historia', 'empresa transporte Ecuador', '20 años experiencia', 'misión visión transporte', 'líderes logística Ecuador'],
+  openGraph: {
+    title: 'Nosotros - MS Translogismar',
+    description: 'Más de 20 años de experiencia en transporte de carga pesada en Ecuador.',
+    images: ['/img/banner-camiones.png'],
+  },
 }
 
 export default async function Nosotros() {
@@ -16,8 +22,22 @@ export default async function Nosotros() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-transparent"></div>
+      <section className="relative text-white section-padding overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/img/banner-camiones.png')"
+          }}
+        ></div>
+        {/* Professional Dark Overlay - Multi-layer for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/45 to-slate-700/65"></div>
+        {/* Subtle bottom-up gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-900/75 via-transparent to-transparent"></div>
+        {/* Refined accent overlay - more professional */}
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-600/8 via-accent-500/12 to-transparent"></div>
+        {/* Subtle vignette effect */}
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-dark-900/30"></div>
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <div className="inline-block">
@@ -50,10 +70,9 @@ export default async function Nosotros() {
             </div>
           </div>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-20 right-10 w-20 h-20 bg-accent-500/20 rounded-full blur-xl animate-bounce-subtle"></div>
-        <div className="absolute bottom-20 left-10 w-32 h-32 bg-accent-400/10 rounded-full blur-2xl animate-pulse-soft"></div>
+        {/* Additional decorative elements for enhanced elegance */}
+        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg animate-float"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-accent-300/10 rounded-full blur-2xl animate-pulse-soft"></div>
       </section>
 
       {/* About Section - Balanced Layout */}
@@ -77,7 +96,7 @@ export default async function Nosotros() {
               <div className="space-y-6">
                 {/* Main Story */}
                 <div className="prose prose-lg max-w-none">
-                  <div className="text-lg leading-relaxed text-neutral-700 whitespace-pre-line">
+                  <div className="text-base leading-relaxed text-neutral-700 whitespace-pre-line">
                     {nosotros[0].descHistory}
                   </div>
                 </div>
