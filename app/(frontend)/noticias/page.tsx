@@ -4,11 +4,11 @@ import NewsInterface from "@/interfaces/newsInterface"
 import { getNewsPrisma } from "@/data/prismaNoticias"
 
 export const metadata: Metadata = {
-  title: 'Noticias - MS Translogismar',
-  description: 'MS Translogismar - Últimas noticias, novedades y tendencias del sector transporte y logística en Ecuador. Mantente informado sobre la industria.',
-  keywords: ['noticias transporte Ecuador', 'novedades logística', 'sector transporte Ecuador', 'MS Translogismar noticias'],
+  title: 'Noticias - Grupo MS',
+  description: 'Grupo MS - Últimas noticias, novedades y tendencias del sector transporte y logística en Ecuador. Mantente informado sobre la industria.',
+  keywords: ['noticias transporte Ecuador', 'novedades logística', 'sector transporte Ecuador', 'Grupo MS noticias'],
   openGraph: {
-    title: 'Noticias - MS Translogismar',
+    title: 'Noticias - Grupo MS',
     description: 'Últimas noticias y novedades del sector transporte y logística en Ecuador.',
     images: ['/img/banner-camiones.png'],
   },

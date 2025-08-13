@@ -4,7 +4,7 @@ export default function StructuredData() {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "MS Translogismar",
+    "name": "Grupo MS",
     "alternateName": "M.S. Grupo Logístico",
     "url": "https://grupomstransporte.com",
     "logo": "https://grupomstransporte.com/img/logo.svg",
@@ -42,7 +42,7 @@ export default function StructuredData() {
   const localBusinessData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "MS Translogismar",
+    "name": "Grupo MS",
     "image": "https://grupomstransporte.com/img/banner-camiones.png",
     "telephone": "+593-95-898-9766",
     "email": "info@grupomstransporte.com",
@@ -90,7 +90,7 @@ export default function StructuredData() {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "MS Translogismar",
+    "name": "Grupo MS",
     "url": "https://grupomstransporte.com",
     "potentialAction": {
       "@type": "SearchAction",

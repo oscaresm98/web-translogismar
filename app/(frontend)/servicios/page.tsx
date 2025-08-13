@@ -9,11 +9,11 @@ import StaggerContainer, { StaggerItem } from "@/components/transitions/stagger-
 
 
 export const metadata: Metadata = {
-  title: 'Servicios de Transporte - MS Translogismar',
-  description: 'MS Translogismar - Servicios especializados de transporte de carga pesada y liviana en Ecuador. Logística integral, mudanzas industriales y transporte de maquinaria.',
+  title: 'Servicios de Transporte - Grupo MS',
+  description: 'Grupo MS - Servicios especializados de transporte de carga pesada y liviana en Ecuador. Logística integral, mudanzas industriales y transporte de maquinaria.',
   keywords: ['servicios transporte Ecuador', 'carga pesada Ecuador', 'logística integral', 'mudanzas industriales Ecuador', 'transporte maquinaria'],
   openGraph: {
-    title: 'Servicios de Transporte - MS Translogismar',
+    title: 'Servicios de Transporte - Grupo MS',
     description: 'Servicios especializados de transporte de carga pesada y liviana en Ecuador.',
     images: ['/img/camion.jpg'],
   },

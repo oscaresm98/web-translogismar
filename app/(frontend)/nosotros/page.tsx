@@ -7,12 +7,12 @@ import { getEnterprisesPrisma } from "@/data/prismaNosotros"
 
 
 export const metadata = {
-  title: 'Nosotros - MS Translogismar',
-  description: 'Conoce MS Translogismar - Más de 20 años de experiencia en transporte de carga pesada en Ecuador. Historia, misión, visión y valores de nuestra empresa líder en logística.',
-  keywords: ['MS Translogismar historia', 'empresa transporte Ecuador', '20 años experiencia', 'misión visión transporte', 'líderes logística Ecuador'],
+  title: 'Nosotros - Grupo MS',
+  description: 'Conoce Grupo MS - Más de 20 años de experiencia en transporte de carga pesada y Liviana en Ecuador. Historia, misión, visión y valores de nuestra empresa líder en logística.',
+  keywords: ['Grupo MS historia', 'empresa transporte Ecuador', '20 años experiencia', 'misión visión transporte', 'líderes logística Ecuador'],
   openGraph: {
-    title: 'Nosotros - MS Translogismar',
-    description: 'Más de 20 años de experiencia en transporte de carga pesada en Ecuador.',
+    title: 'Nosotros - Grupo MS',
+    description: 'Más de 20 años de experiencia en transporte de carga pesada y Liviana en Ecuador.',
     images: ['/img/banner-camiones.png'],
   },
 }

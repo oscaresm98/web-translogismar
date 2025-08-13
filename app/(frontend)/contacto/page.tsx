@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 import ContactForm from '@/components/contacto/contact-form'
 
 export const metadata: Metadata = {
-  title: 'Contacto - MS Translogismar',
-  description: 'Contáctanos. MS Translogismar - Empresa líder en transporte de carga pesada en Ecuador. Respuesta en menos de 2 horas.',
-  keywords: ['contacto transporte Ecuador', 'cotización carga pesada', 'MS Translogismar contacto', 'transporte Ecuador'],
+  title: 'Contacto - Grupo MS',
+  description: 'Contáctanos. Grupo MS- Empresa líder en transporte de carga pesada y Livina en Ecuador. Respuesta en menos de 2 horas.',
+  keywords: ['contacto transporte Ecuador', 'cotización carga pesada', 'Grupo MS contacto', 'transporte Ecuador'],
   openGraph: {
-    title: 'Contacto - MS Translogismar',
+    title: 'Contacto - Grupo MS',
     description: 'Contáctanos. Respuesta en menos de 2 horas.',
     images: ['/img/banner-camion.png'],
   },
@@ -103,7 +103,7 @@ export default function Contacto() {
 
                 <div className="space-y-6">
                   {/* Phone */}
-                  <a href="tel:+573001234567" className="card p-6 block group hover:scale-105 transition-all duration-300">
+                  <a href="tel:+593958989766" className="card p-6 block group hover:scale-105 transition-all duration-300">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,8 @@ export default function Contacto() {
                   </a>
 
                   {/* Email */}
-                  <a href="mailto:info@translogismar.com" className="card p-6 block group hover:scale-105 transition-all duration-300">
+                  <a href="mailto:info@grupomstransporte.com" className="card p-6 block group hover:scale-105 transition-all duration-300">
+
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-dark-600 to-dark-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +129,8 @@ export default function Contacto() {
                       </div>
                       <div>
                         <h3 className="font-bold text-dark-800 mb-1">Email</h3>
-                        <p className="text-dark-600 font-semibold">info@translogismar.com</p>
+                        <p className="text-dark-600 font-semibold">info@grupomstransporte.com</p>
+
                         <p className="text-sm text-neutral-600">Respuesta en &lt;2 horas</p>
                       </div>
                     </div>
