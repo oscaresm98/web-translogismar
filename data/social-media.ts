@@ -21,7 +21,7 @@ export async function getSocialMedias() {
 }
 
 export async function createSocialMedias(data: any) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/sociales`, {
         method: "POST",

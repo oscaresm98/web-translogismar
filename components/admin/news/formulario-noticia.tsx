@@ -29,20 +29,24 @@ export default function FormularioNoticioEditar({ noticia }: { noticia: NewsInte
 
   const onSubmit = handleSubmit(async data => {
     setLoading(true)
-    const formData = new FormData()
-    if (data.imageURL.length) {
-      formData.append("image", data.imageURL[0])
-    } else {
-      formData.append("image", "")
-    }
-    // Se conserva la imagen original en caso de no modificarse
-    data = { ...data, "imageURL": noticia?.imageURL }
-    formData.append("recipe", JSON.stringify(data))
-    const res = await updateNew(formData, noticia.id)
-    if (res && Object.keys(res).length > 1) {
+    try {
+      const formData = new FormData()
+      if (data.imageURL.length) {
+        formData.append("image", data.imageURL[0])
+      } else {
+        formData.append("image", "")
+      }
+      data = { ...data, "imageURL": noticia?.imageURL }
+      formData.append("recipe", JSON.stringify(data))
+      const res = await updateNew(formData, noticia.id)
+      if (res && Object.keys(res).length > 1) {
+        router.push('/admin/noticias')
+        router.refresh()
+      }
+    } catch (error) {
+      console.error('Error al actualizar noticia:', error)
+    } finally {
       setLoading(false)
-      router.push('/admin/noticias')
-      router.refresh()
     }
   })
 

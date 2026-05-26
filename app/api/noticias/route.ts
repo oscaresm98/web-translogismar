@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import db from "@/libs/db"
 import { auth } from '@/libs/auth'
 import { uploadImage } from '@/libs/upload-image'
@@ -18,9 +18,12 @@ export async function POST(req: NextRequest) {
         const session = await auth();
         if (!session) return NextResponse.json({ error: 'Usuario no autenticado', }, { status: 401 })
         const formData = await req.formData();
-        const image = formData.get('image') as unknown as File;
+        const image = formData.get('image');
         const data = JSON.parse(formData.get("recipe") as string);
         const folder = "translogismar/noticias"
+        if (!(image instanceof File) || image.size === 0) {
+            return NextResponse.json({ message: "La imagen es requerida" }, { status: 400 })
+        }
         const imageCloudinary: any = await uploadImage(image, folder);
         data.imageURL = imageCloudinary.secure_url;
         const userFound = await db.users.findUnique({
@@ -28,7 +31,8 @@ export async function POST(req: NextRequest) {
                 email: formData.get('user') as string
             }
         })
-        if (userFound) data.authorId = +userFound?.id;
+        if (!userFound) return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 400 })
+        data.authorId = userFound.id;
 
         const newsFound = await db.news.findUnique({
             where: {
@@ -40,7 +44,7 @@ export async function POST(req: NextRequest) {
         }
         data.slug = data.title.toLocaleLowerCase().replaceAll(' ', '_').replaceAll("'", '').replaceAll(".", '')
         const news = await db.news.create({ data })
-        revalidateTag('dataNews')
+        revalidateTag('dataNews', 'default')
         return NextResponse.json(news)
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 500 })

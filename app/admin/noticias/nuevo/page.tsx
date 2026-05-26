@@ -1,12 +1,15 @@
-import FormularioNuevo from "@/components/admin/news/formulario-nuevo"
+import FormularioNuevo from '@/components/admin/news/formulario-nuevo'
+import Breadcrumb from '@/components/admin/breadcrumb'
 
-
-export default function NuevoServicio() {
-    return (
-        <div className="container p-2">
-            <h1 className="font-black text-4xl text-[#0230E6] ">Nueva Noticia</h1>
-            <p className="mt-3">A continuación podrás crear una nueva noticia</p>
-            <FormularioNuevo />
-        </div>
-    )
+export default function NuevaNoticia() {
+  return (
+    <div className="container p-6 max-w-2xl">
+      <Breadcrumb items={[{ label: 'Noticias', href: '/admin/noticias' }, { label: 'Nueva' }]} />
+      <h1 className="font-bold text-3xl text-secun">Nueva Noticia</h1>
+      <p className="text-neutral-400 text-sm mt-1 mb-6">Completa los campos para publicar una nueva noticia</p>
+      <div className="bg-white rounded-xl shadow-sm border border-neutral-100 p-6">
+        <FormularioNuevo />
+      </div>
+    </div>
+  )
 }

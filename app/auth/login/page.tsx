@@ -28,7 +28,7 @@ export default function LoginPage() {
   return (
     <form onSubmit={onSubmit} className="flex flex-col max-w-2xl mx-auto my-12 justify-center p-2">
       
-      <Image src={logo} alt="imagen logo" className="mx-auto" loading="lazy"/>
+      <Image src={logo} alt="imagen logo" className="mx-auto" loading="eager" priority />
       <h1 className="text-5xl mt-7 font-bold text-center text-prima">Ingreso de Usuario</h1>
       {
         error && (

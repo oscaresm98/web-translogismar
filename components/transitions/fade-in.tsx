@@ -10,30 +10,27 @@ interface FadeInProps {
   className?: string
 }
 
-export default function FadeIn({ 
-  children, 
-  delay = 0, 
-  duration = 0.5, 
+export default function FadeIn({
+  children,
+  delay = 0,
+  duration = 0.5,
   direction = 'up',
-  className = ''
+  className = '',
 }: FadeInProps) {
-  const directionVariants = {
-    up: { y: 30, opacity: 0 },
-    down: { y: -30, opacity: 0 },
-    left: { x: 30, opacity: 0 },
+  const initial = {
+    up:    { y: 30, opacity: 0 },
+    down:  { y: -30, opacity: 0 },
+    left:  { x: 30, opacity: 0 },
     right: { x: -30, opacity: 0 },
-    none: { opacity: 0 }
-  }
+    none:  { opacity: 0 },
+  }[direction]
 
   return (
     <motion.div
-      initial={directionVariants[direction]}
-      animate={{ x: 0, y: 0, opacity: 1 }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.25, 0.25, 0.75]
-      }}
+      initial={initial}
+      whileInView={{ x: 0, y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration, delay, ease: [0.25, 0.25, 0.25, 0.75] }}
       className={className}
     >
       {children}

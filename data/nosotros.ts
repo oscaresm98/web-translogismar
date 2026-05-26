@@ -34,7 +34,7 @@ export async function getEnterprise(id: number) {
 }
 
 export async function updateEnterprise(data: FormData, id: number) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/nosotros/${id}`, {
         method: "PUT",

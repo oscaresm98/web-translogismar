@@ -1,0 +1,17 @@
+{
+  "name": "web-translogismar",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    {
+      // KV para cache tags (revalidateTag). Crear en el dashboard de Cloudflare.
+      "binding": "NEXT_CACHE_WORKERS_KV",
+      "id": "REEMPLAZA_CON_TU_KV_NAMESPACE_ID"
+    }
+  ]
+}

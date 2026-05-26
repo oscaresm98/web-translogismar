@@ -8,28 +8,24 @@ async function getDataCliente(id: number) {
       method: "GET",
       next: { tags: ['dataClient'] }
     })
-    if (!res.ok) {
-      throw new Error('No se pudo cargar la data')
-    }
-    const data = await res.json()
-    return data
+    if (!res.ok) throw new Error('No se pudo cargar la data')
+    return await res.json()
   } catch (error: any) {
     return { error: { message: error?.message } };
   }
 }
 
-export default async function EditClientPage({ params }: { params: { id: number } }) {
-  const client = await getDataCliente(params.id) as ClientFormType
+export default async function EditClientPage({ params }: { params: Promise<{ id: number }> }) {
+  const { id } = await params
+  const client = await getDataCliente(id) as ClientFormType
 
-  if (Object.keys(client).length === 1) {
-    redirect('/admin/clientes')
-  }
+  if (Object.keys(client).length === 1) redirect('/admin/clientes')
 
   return (
     <div className="container p-2">
-      <h1 className="font-black text-4xl text-[#0230E6] ">Editar Cliente</h1>
+      <h1 className="font-black text-4xl text-[#0230E6]">Editar Cliente</h1>
       <p className="mt-3">A continuación podrás modificar los datos del cliente</p>
-      <EditClientForm client={client} idClient={params.id} />
+      <EditClientForm client={client} idClient={id} />
     </div>
   )
 }

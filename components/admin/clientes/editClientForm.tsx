@@ -25,22 +25,25 @@ export default function EditClientForm({client, idClient}: EditClientFormProps) 
 
   const onSubmit = handleSubmit(async data => {
     setLoading(true)
-    const formData = new FormData()
-    if (data.imageURL.length == 1) {
-      formData.append("image", data.imageURL[0])
-    } else {
-      formData.append("image", "")
-    }
-
-    data = { ...data, "imageURL": client?.imageURL }
-    formData.append("recipe", JSON.stringify(data))
-    const res = await updateClient(formData, idClient)
-    if (res && Object.keys(res).length > 1) {
+    try {
+      const formData = new FormData()
+      if (data.imageURL.length == 1) {
+        formData.append("image", data.imageURL[0])
+      } else {
+        formData.append("image", "")
+      }
+      data = { ...data, "imageURL": client?.imageURL }
+      formData.append("recipe", JSON.stringify(data))
+      const res = await updateClient(formData, idClient)
+      if (res && Object.keys(res).length > 1) {
+        router.push('/admin/clientes')
+        router.refresh()
+      }
+    } catch (error) {
+      console.error('Error al actualizar cliente:', error)
+    } finally {
       setLoading(false)
-      router.push('/admin/clientes')
-      router.refresh()
     }
-
   })
 
   return (

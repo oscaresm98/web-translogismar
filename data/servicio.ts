@@ -1,4 +1,4 @@
-'use server'
+﻿'use server'
 import { headers } from "next/headers";
 import { revalidateTag } from 'next/cache';
 
@@ -6,7 +6,7 @@ export async function getDataServices() {
     const res = await fetch(`${process.env.API_URL}/servicios`, { 
         next: { 
             tags: ['dataServices'],
-            // Almacenar en caché durante 1 hora (3600 segundos)
+            // Almacenar en cachÃ© durante 1 hora (3600 segundos)
             revalidate: 3600 
         } 
     })
@@ -19,7 +19,7 @@ export async function getDataServices() {
 
 
 export async function updateService(data: FormData, id: number) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     
     try {
@@ -29,15 +29,15 @@ export async function updateService(data: FormData, id: number) {
             headers: {
                 'cookie': myCookies
             },
-            // Aseguramos que no se use caché para operaciones de escritura
+            // Aseguramos que no se use cachÃ© para operaciones de escritura
             cache: 'no-store'
         })
         
         const respuesta = await res.json()
         
         // Revalidamos todos los tags relacionados con servicios para mantener la coherencia
-        revalidateTag('dataServices');
-        revalidateTag('services-list');
+        revalidateTag('dataServices', 'default');
+        revalidateTag('services-list', 'default');
         
         return respuesta
     } catch (error) {
@@ -46,8 +46,21 @@ export async function updateService(data: FormData, id: number) {
     }
 }
 
+export async function deleteService(id: number) {
+    const myHeaders = await headers();
+    const myCookies = myHeaders.get('cookie') as string
+    const res = await fetch(`${process.env.API_URL}/servicios/${id}`, {
+        method: 'DELETE',
+        headers: { 'cookie': myCookies },
+        cache: 'no-store'
+    })
+    const respuesta = await res.json()
+    revalidateTag('dataServices', 'default')
+    return respuesta
+}
+
 export async function createService(data: FormData) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     
     try {
@@ -57,15 +70,15 @@ export async function createService(data: FormData) {
             headers: {
                 'cookie': myCookies
             },
-            // Aseguramos que no se use caché para operaciones de escritura
+            // Aseguramos que no se use cachÃ© para operaciones de escritura
             cache: 'no-store'
         })
         
         const respuesta = await res.json()
         
         // Revalidamos todos los tags relacionados con servicios para mantener la coherencia
-        revalidateTag('dataServices');
-        revalidateTag('services-list');
+        revalidateTag('dataServices', 'default');
+        revalidateTag('services-list', 'default');
         
         return respuesta
     } catch (error) {

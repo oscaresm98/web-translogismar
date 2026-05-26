@@ -1,9 +1,9 @@
-'use server'
+﻿'use server'
 import { headers } from "next/headers";
 import { revalidateTag } from 'next/cache';
 
 export async function getDataClients() {
-  const myHeaders = headers();
+  const myHeaders = await headers();
   const res = await fetch(`${process.env.API_URL}/clientes`, { next: { tags: ['dataClients'] } })
   if (!res.ok) {
     throw new Error('No se pudo cargar la data')
@@ -13,7 +13,7 @@ export async function getDataClients() {
 }
 
 export async function createClient(data: FormData) {
-  const myHeaders = headers();
+  const myHeaders = await headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes`, {
     method: "POST",
@@ -21,18 +21,18 @@ export async function createClient(data: FormData) {
     headers: {
       'cookie': myCookies
     },
-    cache: 'no-store' // Asegura que no se usa caché para esta solicitud
+    cache: 'no-store' // Asegura que no se usa cachÃ© para esta solicitud
   })
   const respuesta = await res.json()
   
-  // Revalidar la caché después de crear un nuevo cliente
-  revalidateTag('dataClients');
+  // Revalidar la cachÃ© despuÃ©s de crear un nuevo cliente
+  revalidateTag('dataClients', 'default');
   
   return respuesta
 }
 
 export async function updateClient(data: FormData, id: number) {
-  const myHeaders = headers();
+  const myHeaders = await headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes/${id}`, {
     method: "PUT",
@@ -44,14 +44,14 @@ export async function updateClient(data: FormData, id: number) {
   })
   const respuesta = await res.json()
   
-  // Revalidar la caché después de actualizar
-  revalidateTag('dataClients');
+  // Revalidar la cachÃ© despuÃ©s de actualizar
+  revalidateTag('dataClients', 'default');
   
   return respuesta
 }
 
 export async function deleteClient(id: number) {
-  const myHeaders = headers();
+  const myHeaders = await headers();
   const myCookies = myHeaders.get('cookie') as string
   const res = await fetch(`${process.env.API_URL}/clientes/${id}`, {
     method: "DELETE",
@@ -62,8 +62,8 @@ export async function deleteClient(id: number) {
   })
   const respuesta = await res.json()
   
-  // Revalidar la caché después de eliminar
-  revalidateTag('dataClients');
+  // Revalidar la cachÃ© despuÃ©s de eliminar
+  revalidateTag('dataClients', 'default');
   
   return respuesta
 }

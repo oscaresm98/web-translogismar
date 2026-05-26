@@ -8,10 +8,10 @@ interface StaggerContainerProps {
   staggerDelay?: number
 }
 
-export default function StaggerContainer({ 
-  children, 
+export default function StaggerContainer({
+  children,
   className = '',
-  staggerDelay = 0.1 
+  staggerDelay = 0.1,
 }: StaggerContainerProps) {
   const container = {
     hidden: { opacity: 0 },
@@ -19,16 +19,17 @@ export default function StaggerContainer({
       opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   }
 
   return (
     <motion.div
       variants={container}
       initial="hidden"
-      animate="show"
+      whileInView="show"
+      viewport={{ once: true, margin: '-50px' }}
       className={className}
     >
       {children}
@@ -36,17 +37,20 @@ export default function StaggerContainer({
   )
 }
 
-export const StaggerItem = ({ children, className = '' }: { children: ReactNode, className?: string }) => {
+export const StaggerItem = ({
+  children,
+  className = '',
+}: {
+  children: ReactNode
+  className?: string
+}) => {
   const item = {
     hidden: { y: 20, opacity: 0 },
-    show: { 
-      y: 0, 
+    show: {
+      y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: easeInOut
-      }
-    }
+      transition: { duration: 0.5, ease: easeInOut },
+    },
   }
 
   return (

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import ErrorForm from '@/components/error-form';
+import Toast from '@/components/admin/toast';
 import ServiceInterface from '@/interfaces/serviceInterface';
 import logo from '@/public/img/logoMundo.svg'
 import { updateService } from '@/data/servicio';
@@ -13,6 +14,7 @@ export default function FormularioServicios({ service }: { service: ServiceInter
   const router = useRouter()
   const [imagePreview, setImagePreview] = useState<string>(service?.imageURL);
   const [loading, setLoading] = useState(false)
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -59,18 +61,16 @@ export default function FormularioServicios({ service }: { service: ServiceInter
         router.refresh() 
         router.push('/admin/servicios')
       } else {
-        setLoading(false)
-        alert("Ocurrió un error al actualizar el servicio")
-        console.error("Error en la respuesta:", res)
+        setToast({ message: res?.message || 'Error al actualizar el servicio', type: 'error' })
       }
-    } catch (error) {
+    } catch {
+      setToast({ message: 'Error de red al actualizar el servicio', type: 'error' })
+    } finally {
       setLoading(false)
-      console.error("Error al enviar el formulario:", error)
-      alert("Ocurrió un error al actualizar el servicio")
     }
   })
   
-  return (
+  return (<>
     <form onSubmit={onSubmit} className='my-4'>
       <label htmlFor="name" className='block font-bold text-[#0230E6] uppercase'>Nombre</label>
       {
@@ -178,8 +178,9 @@ export default function FormularioServicios({ service }: { service: ServiceInter
         type="submit"
         disabled={loading}
         value={loading ? 'Actualizando...' : 'Actualizar Servicio'}
-        className="bg-blue-800 transition duration-300 delay-150 hover:bg-blue-900 hover:cursor-pointer text-white p-2 font-bold rounded-md mt-6 disabled:bg-blue-800/50"
+        className="bg-secun transition duration-300 hover:bg-dark-800 hover:cursor-pointer text-white p-2 font-bold rounded-md mt-6 disabled:opacity-50"
       />
     </form>
-  )
+    {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+  </>)
 }

@@ -19,7 +19,7 @@ export default async function NoticiasPage() {
 
   return (
     <main className="container md:px-8">
-      <h1 className="text-5xl text-prima text-center font-bold my-12">Últimas Noticias</h1>
+      <h1 className="news-title text-5xl text-prima text-center font-bold my-12">Últimas Noticias</h1>
       <NewsSection news={newsData} />
     </main>
   )

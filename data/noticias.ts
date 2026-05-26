@@ -1,4 +1,4 @@
-'use server'
+﻿'use server'
 import { headers } from "next/headers";
 import { revalidateTag } from 'next/cache';
 
@@ -6,7 +6,7 @@ export async function getDataNews() {
     const res = await fetch(`${process.env.API_URL}/noticias`, { 
         next: { 
             tags: ['dataNews'],
-            // Almacenar en caché durante 3 horas para noticias
+            // Almacenar en cachÃ© durante 3 horas para noticias
             revalidate: 10800
         } 
     })
@@ -19,7 +19,7 @@ export async function getDataNews() {
 
 
 export async function updateNew(data: FormData, id: number) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/noticias/${id}`, {
         method: "PUT",
@@ -31,14 +31,14 @@ export async function updateNew(data: FormData, id: number) {
     })
     const respuesta = await res.json()
     
-    // Revalidar el caché después de actualizar
-    revalidateTag('dataNews');
+    // Revalidar el cachÃ© despuÃ©s de actualizar
+    revalidateTag('dataNews', 'default');
     
     return respuesta
 }
 
 export async function createNew(data: FormData) {
-    const myHeaders = headers();
+    const myHeaders = await headers();
     const myCookies = myHeaders.get('cookie') as string
     const res = await fetch(`${process.env.API_URL}/noticias`, {
         method: "POST",
@@ -50,8 +50,8 @@ export async function createNew(data: FormData) {
     })
     const respuesta = await res.json()
     
-    // Revalidar el caché después de crear
-    revalidateTag('dataNews');
+    // Revalidar el cachÃ© despuÃ©s de crear
+    revalidateTag('dataNews', 'default');
     
     return respuesta
 }

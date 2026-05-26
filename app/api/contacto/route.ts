@@ -1,17 +1,31 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 export async function POST(req: Request) {
   try {
     const { nombre, email, telefono, mensaje } = await req.json();
+
+    if (!nombre || !email || !mensaje) {
+      return Response.json({ error: 'Nombre, email y mensaje son requeridos' }, { status: 400 });
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const html = `
       <h2>Nuevo mensaje desde la pagina Web</h2>
-      <p><strong>Nombre:</strong> ${nombre}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Teléfono:</strong> ${telefono}</p>
-      <p><strong>Mensaje:</strong><br/>${mensaje}</p>
+      <p><strong>Nombre:</strong> ${escapeHtml(String(nombre))}</p>
+      <p><strong>Email:</strong> ${escapeHtml(String(email))}</p>
+      <p><strong>Teléfono:</strong> ${escapeHtml(String(telefono ?? ''))}</p>
+      <p><strong>Mensaje:</strong><br/>${escapeHtml(String(mensaje))}</p>
     `;
     // await resend.domains.get(process.env.RESEND_DOMAIN!);
 

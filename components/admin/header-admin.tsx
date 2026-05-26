@@ -1,24 +1,26 @@
+import Link from 'next/link'
+import SignOutButton from '@/components/admin/sign-out-button'
 
-import Link from "next/link"
-
-export default async function HeaderAdmin() {
-
+export default function HeaderAdmin() {
   return (
-    <header className="px-2 bg-white">
-      <div className="flex flex-col items-center md:flex-row md:justify-between">
-        <h1 className="text-xl my-7 font-light text-prima">Bienvenido al <span className="text-secun font-bold">Admin</span></h1>
-        <div>
+    <header className="px-4 py-3 bg-white border-b border-neutral-200 shadow-sm">
+      <div className="flex items-center justify-between">
+        <h1 className="text-base font-light text-neutral-500">
+          Panel de{' '}
+          <span className="text-secun font-bold">Administración</span>
+        </h1>
+        <div className="flex items-center gap-1">
           <Link
             href="/"
-            className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-100 hover:text-prima hover:cursor-pointer`}
             target="_blank"
-          >Ver Sitio</Link>
-          <Link
-            href="/api/auth/signout"
-            className={`uppercase text-secun font-bold w-full text-center text-sm p-2 transition duration-300 delay-100 hover:text-prima hover:cursor-pointer`}
-          >Cerrar Sesión</Link>
+            className="uppercase text-secun font-bold text-sm p-2 transition duration-300 hover:text-prima"
+          >
+            Ver Sitio
+          </Link>
+          <span className="text-neutral-200 select-none">|</span>
+          <SignOutButton />
         </div>
       </div>
-    </header >
+    </header>
   )
 }

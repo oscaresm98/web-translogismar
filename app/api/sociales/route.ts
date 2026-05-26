@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import db from "@/libs/db"
 import { auth } from '@/libs/auth'
 import { revalidatePath, revalidateTag } from 'next/cache'
@@ -19,22 +19,18 @@ export async function POST(req: NextRequest) {
         if (!session) return NextResponse.json({ error: 'Usuario no autenticado', }, { status: 401 })
         const data = await req.json();
         if (data.data) {
-            data.data.forEach(async (socialMedia: SocialMediaFormType) => {
+            await Promise.all(data.data.map(async (socialMedia: SocialMediaFormType) => {
                 if (socialMedia.link === 'eliminar') {
-                    await db.socialMedia.delete({where:{name: socialMedia.name}})
+                    await db.socialMedia.delete({ where: { name: socialMedia.name } })
                 } else {
                     await db.socialMedia.upsert({
-                        where: {
-                            name: socialMedia.name,
-                        },
-                        update: {
-                            link: socialMedia.link
-                        },
+                        where: { name: socialMedia.name },
+                        update: { link: socialMedia.link },
                         create: socialMedia
                     })
                 }
-                
-            });
+            }))
+            revalidateTag('dataSociales', 'default')
             return NextResponse.json({ message: "Redes sociales creadas correctamentes", status: 202 }, { status: 202 })
         }
 
@@ -47,7 +43,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ message: "El nombre debe ser unico" }, { status: 400 })
         }
         const socialMedia = await db.socialMedia.create({ data })
-        revalidateTag('dataSociales')
+        revalidateTag('dataSociales', 'default')
         return NextResponse.json(socialMedia)
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 500 })
